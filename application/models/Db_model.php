@@ -15,5 +15,9 @@ class Db_model extends CI_Model {
 		$query = $this->db->query("SELECT act_id, act_libelle FROM t_actualitee_act;");
 		return $query->result_array();
 	}
+	public function get_nb_compte(){
+        $query = $this->db->query("SELECT COUNT(com_login) as nombre FROM t_compt_com;");
+        return $query->row();
+    }
 
 }

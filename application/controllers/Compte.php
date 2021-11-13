@@ -14,6 +14,7 @@
 			$data['pseudos'] = $this->db_model->get_all_compte();
 
 			$this->load->view('templates/haut');
+			$this->load->view('templates/menu_visiteur.php');
 			$this->load->view('compte_liste',$data);
 			$this->load->view('templates/bas');
 		}

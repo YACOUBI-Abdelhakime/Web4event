@@ -12,7 +12,7 @@ class Actualite extends CI_Controller {
             $url=base_url(); header("Location:$url");}
         else{
             $data['titre'] = 'Actualité :';
-            $data['actu'] = $this->db_model->get_actualite($numero);
+            $data['actu'] = $this->db_model->get_actualite($numero); 
 
             $this->load->view('templates/haut');
             $this->load->view('actualite_afficher',$data);
@@ -24,6 +24,7 @@ class Actualite extends CI_Controller {
         $data['actus'] = $this->db_model->get_all_actualite();
 
         $this->load->view('templates/haut');
+		$this->load->view('templates/menu_visiteur.php');        
         $this->load->view('actualites',$data);
         $this->load->view('templates/bas');
     }
