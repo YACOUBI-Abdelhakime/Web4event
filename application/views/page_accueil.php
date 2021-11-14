@@ -30,7 +30,7 @@
             <p>Monday to Wednesday<br>10-12 December</p>
           </div>
           <div class="col-lg-2">
-            <h3><?php echo $titre;?> ::</h3>
+            <h3><?php echo $titre;?> v-1.0</h3>
             <p><?php echo $res->nombre;?></p>
           </div>
         </div>
