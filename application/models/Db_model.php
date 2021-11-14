@@ -8,11 +8,11 @@ class Db_model extends CI_Model {
 		return $query->result_array();
 	}
     public function get_actualite($numero){
-        $query = $this->db->query("SELECT act_id, act_libelle FROM t_actualitee_act WHERE act_id=".$numero.";");
+        $query = $this->db->query("SELECT act_id, act_libelle  FROM t_actualitee_act WHERE act_id=".$numero.";");
         return $query->row();
     }
     public function get_all_actualite(){
-		$query = $this->db->query("SELECT act_id, act_libelle FROM t_actualitee_act;");
+		$query = $this->db->query("SELECT act_libelle, act_description, act_datePublication, act_image FROM t_actualitee_act where act_status='a';");
 		return $query->result_array();
 	}
 	public function get_nb_compte(){

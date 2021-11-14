@@ -894,6 +894,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 20px;
   margin-bottom: 5px;
   padding: 0 20px;
+  background-color: red;
 }
 #hotels a {
   color: #152b79;
@@ -909,6 +910,54 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffc31d;
 }
 #hotels p {
+  padding: 0 20px;
+  margin-bottom: 20px;
+  color: #060c22;
+  font-style: italic;
+  font-size: 15px;
+}
+
+/*--------------------------------------------------------------
+# Actualites Section
+--------------------------------------------------------------*/
+#actualites {
+  padding: 60px 0;
+}
+#actualites .actualite {
+  border: 1px solid #e0e5fa;
+  background: #fff;
+  margin-bottom: 30px;
+}
+#actualites .actualite:hover .actualite-img img {
+  transform: scale(1.1);
+}
+#actualites .actualite-img {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+#actualites .actualite-img img {
+  transition: 0.3s ease-in-out;
+}
+#actualites h3 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding: 0 20px;
+}
+#actualites a {
+  color: #152b79;
+}
+#actualites a:hover {
+  color: #f82249;
+}
+#actualites .stars {
+  padding: 0 20px;
+  margin-bottom: 5px;
+}
+#actualites .stars i {
+  color: #ffc31d;
+}
+#actualites p {
   padding: 0 20px;
   margin-bottom: 20px;
   color: #060c22;

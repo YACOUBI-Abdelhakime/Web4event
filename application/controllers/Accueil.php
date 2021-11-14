@@ -9,14 +9,12 @@ class Accueil extends CI_Controller {
 	}
 	public function afficher(){
 
-		$data['titre'] = 'Nombre des comptes';
-		$data['res'] = $this->db_model->get_nb_compte(); 
+		$data['actus'] = $this->db_model->get_all_actualite(); 
 		// Chargement des 3 vues pour créer la page Web d’accueil
 		$this->load->view('templates/haut');
 		$this->load->view('templates/menu_visiteur.php');
 		$this->load->view('page_accueil',$data);
 		$this->load->view('templates/bas');
 	}
-
 }
 ?>
