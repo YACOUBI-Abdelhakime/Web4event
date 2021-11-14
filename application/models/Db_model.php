@@ -12,7 +12,7 @@ class Db_model extends CI_Model {
         return $query->row();
     }
     public function get_all_actualite(){
-		$query = $this->db->query("SELECT act_libelle, act_description, act_datePublication, act_image FROM t_actualitee_act where act_status='a';");
+		$query = $this->db->query("SELECT act_libelle, act_description, act_datePublication, act_image FROM t_actualitee_act where act_status='a' order by act_datePublication desc;");
 		return $query->result_array();
 	}
 	public function get_nb_compte(){

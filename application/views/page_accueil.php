@@ -45,56 +45,28 @@
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="actualite">
-              <div class="actualite-img">
-                <img src="<?php echo base_url();?>style/assets/img/hotels/1.jpg" alt="Hotel 1" class="img-fluid">
-              </div>
-              <h3><a href="#">Hotel 1</a></h3>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-              </div>
-              <p>0.4 Mile from the Venue</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="actualite">
-              <div class="actualite-img">
-                <img src="<?php echo base_url();?>style/assets/img/hotels/2.jpg" alt="Hotel 2" class="img-fluid">
-              </div>
-              <h3><a href="#">Hotel 2</a></h3>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill-half-full"></i>
-              </div>
-              <p>0.5 Mile from the Venue</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="actualite">
-              <div class="actualite-img">
-                <img src="<?php echo base_url();?>style/assets/img/hotels/3.jpg" alt="Hotel 3" class="img-fluid">
-              </div>
-              <h3><a href="#">Hotel 3</a></h3>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-              </div>
-              <p>0.6 Mile from the Venue</p>
-            </div>
-          </div>
+          <?php
+            if($actus != NULL) {
+              foreach($actus as $actu){
+                ?>
+                  <div class="col-lg-4 col-md-6">
+                    <div class="actualite">
+                      <div class="actualite-img">
+                        <img src="<?php echo $actu["act_image"];?>" alt="act-img" class="img-fluid">
+                      </div>
+                      <h3><a href="#"><?php echo $actu["act_libelle"];?></a></h3>
+                      <p><?php echo $actu["act_description"];?></p>
+                      <p><?php echo $actu["act_datePublication"];?></p>
+                    </div>
+                  </div>
+                <?php
+              }
+            }else {
+              ?>
+              <h3><a>Aucun Actualité !</a></h3>
+              <?php
+            }
+          ?>
 
         </div>
       </div>

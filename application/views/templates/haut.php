@@ -24,7 +24,7 @@
   <link href="<?php echo base_url();?>style/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="<?php echo base_url();?>style/assets/css/style.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>style/assets/css/style1.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: TheEvent - v4.6.0
