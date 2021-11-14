@@ -15,7 +15,7 @@
     <section id="about">
       <div class="container" data-aos="fade-up">
         <div class="row">
-          <div class="col-lg-5">
+          <div class="col-lg-6">
             <h2>About The Event</h2>
             <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
               accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt inventore in
@@ -25,17 +25,81 @@
             <h3>Where</h3>
             <p>Downtown Conference Center, New York</p>
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-3">
             <h3>When</h3>
             <p>Monday to Wednesday<br>10-12 December</p>
           </div>
-          <div class="col-lg-2">
-            <h3><?php echo $titre;?> v-1.0</h3>
-            <p><?php echo $res->nombre;?></p>
-          </div>
+          <!-- <div class="col-lg-2">
+            <h3><?php //echo $titre;?> :</h3>
+            <p><?php //echo $res->nombre;?></p>
+          </div> -->
         </div>
       </div>
     </section><!-- End About Section -->
+    <!-- ======= Actualites Section ======= -->
+    <section id="actualites" class="section-with-bg">
+
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Actualités</h2>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="actualite">
+              <div class="actualite-img">
+                <img src="<?php echo base_url();?>style/assets/img/hotels/1.jpg" alt="Hotel 1" class="img-fluid">
+              </div>
+              <h3><a href="#">Hotel 1</a></h3>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <p>0.4 Mile from the Venue</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="actualite">
+              <div class="actualite-img">
+                <img src="<?php echo base_url();?>style/assets/img/hotels/2.jpg" alt="Hotel 2" class="img-fluid">
+              </div>
+              <h3><a href="#">Hotel 2</a></h3>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill-half-full"></i>
+              </div>
+              <p>0.5 Mile from the Venue</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="actualite">
+              <div class="actualite-img">
+                <img src="<?php echo base_url();?>style/assets/img/hotels/3.jpg" alt="Hotel 3" class="img-fluid">
+              </div>
+              <h3><a href="#">Hotel 3</a></h3>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <p>0.6 Mile from the Venue</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End Actualites Section -->
 
     <!-- ======= Speakers Section ======= -->
     <section id="speakers">
