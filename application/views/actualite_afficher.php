@@ -1,3 +1,4 @@
+<div class="nav-space"></div>
 <div>
 <h1><?php echo $titre;?></h1>
 <br />

@@ -7,7 +7,7 @@ class Accueil extends CI_Controller {
 		$this->load->model('db_model');
 		$this->load->helper('url');
 	}
-	public function afficher(){
+	public function afficher(){ 
 
 		$data['actus'] = $this->db_model->get_all_actualite(); 
 		// Chargement des 3 vues pour créer la page Web d’accueil

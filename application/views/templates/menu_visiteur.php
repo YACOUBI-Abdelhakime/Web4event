@@ -2,6 +2,9 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#actualites">Actualités</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo base_url();?>index.php/animation/lister">Programmation</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo base_url();?>index.php/invite/lister">Invités</a></li>
           <li><a class="nav-link scrollto" href="#speakers">Speakers</a></li>
           <li><a class="nav-link scrollto" href="#schedule">Schedule</a></li>
           <li><a class="nav-link scrollto" href="#venue">Venue</a></li>

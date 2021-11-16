@@ -1,4 +1,5 @@
-<h1><?php echo $titre;?></h1>
+<div class="nav-space"></div>
+<?php echo "<h1>".$titre."</h1>";?>
 <br />
 <?php
     if($pseudos != NULL) {

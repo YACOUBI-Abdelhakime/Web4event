@@ -35,7 +35,9 @@
           </div> -->
         </div>
       </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End About Section -->
+
     <!-- ======= Actualites Section ======= -->
     <section id="actualites" class="section-with-bg">
 
@@ -45,25 +47,38 @@
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
+        
+
           <?php
             if($actus != NULL) {
-              foreach($actus as $actu){
-                ?>
-                  <div class="col-lg-4 col-md-6">
-                    <div class="actualite">
-                      <div class="actualite-img">
-                        <img src="<?php echo $actu["act_image"];?>" alt="act-img" class="img-fluid">
-                      </div>
-                      <h3><a href="#"><?php echo $actu["act_libelle"];?></a></h3>
-                      <p><?php echo $actu["act_description"];?></p>
-                      <p><?php echo $actu["act_datePublication"];?></p>
-                    </div>
-                  </div>
+              ?>
+              <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date Pub</th>
+                    <th scope="col">Organisateur</th>
+                  </tr>
+                </thead>
+                <tbody>
                 <?php
-              }
+                  foreach($actus as $actu){ 
+                    ?>
+                    <tr>
+                      <td><?php echo $actu["act_libelle"];?></td>
+                      <td><?php echo $actu["act_description"];?></td>
+                      <td><?php echo $actu["act_datePublication"];?></td>
+                      <td><?php echo $actu["org_nom"]." ".$actu["org_prenom"];?></td>
+                    </tr>
+                    <?php
+                  }?>
+                    </tbody>
+                  </table>
+            <?php
             }else {
               ?>
-              <h3><a>Aucun Actualité !</a></h3>
+              <h3>Aucune actualité pour l'instant !</h3>
               <?php
             }
           ?>
@@ -72,7 +87,43 @@
       </div>
 
     </section><!-- End Actualites Section -->
+    <!-- ======= Actualites Section ======= -->
+    <!--<section id="actualites" class="section-with-bg">
 
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Actualités</h2>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <?php/*
+            if($actus != NULL) {
+              foreach($actus as $actu){*/
+                ?>
+                  <div class="col-lg-4 col-md-6">
+                    <div class="actualite">
+                      <div class="actualite-img">
+                        <img src="<?php //echo $actu["act_image"];?>" alt="act-img" class="img-fluid">
+                      </div>
+                      <h3><a href="#"><?php //echo $actu["act_libelle"];?></a></h3>
+                      <p><?php //echo $actu["act_description"];?></p>
+                      <p><?php //echo $actu["act_datePublication"];?></p>
+                      <p><?php //echo $actu["org_nom"]." ".$actu["org_prenom"];?></p>
+                    </div>
+                  </div>
+                <?php/*
+              }
+            }else {*/
+              ?>
+              <h3><a>Aucun Actualité !</a></h3>
+              <?php
+            //}
+          ?>
+
+        </div>
+      </div>
+
+    </section>--><!-- End Actualites Section -->
     <!-- ======= Speakers Section ======= -->
     <section id="speakers">
       <div class="container" data-aos="fade-up">
@@ -177,8 +228,8 @@
 
     </section><!-- End Speakers Section -->
 
-    <!-- ======= Schedule Section ======= -->
-    <section id="schedule" class="section-with-bg">
+    <!-- ======= animation Section ======= -->
+    <section id="animation" class="section-with-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
           <h2>Event Schedule</h2>
@@ -205,7 +256,7 @@
           <!-- Schdule Day 1 -->
           <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
 
-            <div class="row schedule-item">
+            <div class="row animation-item">
               <div class="col-md-2"><time>09:30 AM</time></div>
               <div class="col-md-10">
                 <h4>Registration</h4>
@@ -213,7 +264,7 @@
               </div>
             </div>
 
-            <div class="row schedule-item">
+            <div class="row animation-item">
               <div class="col-md-2"><time>10:00 AM</time></div>
               <div class="col-md-10">
                 <div class="speaker">
@@ -224,68 +275,13 @@
               </div>
             </div>
 
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>11:00 AM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/2.jpg" alt="Hubert Hirthe">
-                </div>
-                <h4>Et voluptatem iusto dicta nobis. <span>Hubert Hirthe</span></h4>
-                <p>Maiores dignissimos neque qui cum accusantium ut sit sint inventore.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>12:00 AM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/3.jpg" alt="Cole Emmerich">
-                </div>
-                <h4>Explicabo et rerum quis et ut ea. <span>Cole Emmerich</span></h4>
-                <p>Veniam accusantium laborum nihil eos eaque accusantium aspernatur.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>02:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/4.jpg" alt="Jack Christiansen">
-                </div>
-                <h4>Qui non qui vel amet culpa sequi. <span>Jack Christiansen</span></h4>
-                <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>03:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/5.jpg" alt="Alejandrin Littel">
-                </div>
-                <h4>Quos ratione neque expedita asperiores. <span>Alejandrin Littel</span></h4>
-                <p>Eligendi quo eveniet est nobis et ad temporibus odio quo.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>04:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/6.jpg" alt="Willow Trantow">
-                </div>
-                <h4>Quo qui praesentium nesciunt <span>Willow Trantow</span></h4>
-                <p>Voluptatem et alias dolorum est aut sit enim neque veritatis.</p>
-              </div>
-            </div>
-
           </div>
           <!-- End Schdule Day 1 -->
 
           <!-- Schdule Day 2 -->
           <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-2">
 
-            <div class="row schedule-item">
+            <div class="row animation-item">
               <div class="col-md-2"><time>10:00 AM</time></div>
               <div class="col-md-10">
                 <div class="speaker">
@@ -296,7 +292,7 @@
               </div>
             </div>
 
-            <div class="row schedule-item">
+            <div class="row animation-item">
               <div class="col-md-2"><time>11:00 AM</time></div>
               <div class="col-md-10">
                 <div class="speaker">
@@ -304,50 +300,6 @@
                 </div>
                 <h4>Et voluptatem iusto dicta nobis. <span>Hubert Hirthe</span></h4>
                 <p>Maiores dignissimos neque qui cum accusantium ut sit sint inventore.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>12:00 AM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/3.jpg" alt="Cole Emmerich">
-                </div>
-                <h4>Explicabo et rerum quis et ut ea. <span>Cole Emmerich</span></h4>
-                <p>Veniam accusantium laborum nihil eos eaque accusantium aspernatur.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>02:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/4.jpg" alt="Jack Christiansen">
-                </div>
-                <h4>Qui non qui vel amet culpa sequi. <span>Jack Christiansen</span></h4>
-                <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>03:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/5.jpg" alt="Alejandrin Littel">
-                </div>
-                <h4>Quos ratione neque expedita asperiores. <span>Alejandrin Littel</span></h4>
-                <p>Eligendi quo eveniet est nobis et ad temporibus odio quo.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>04:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/6.jpg" alt="Willow Trantow">
-                </div>
-                <h4>Quo qui praesentium nesciunt <span>Willow Trantow</span></h4>
-                <p>Voluptatem et alias dolorum est aut sit enim neque veritatis.</p>
               </div>
             </div>
 
@@ -357,7 +309,7 @@
           <!-- Schdule Day 3 -->
           <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
 
-            <div class="row schedule-item">
+            <div class="row animation-item">
               <div class="col-md-2"><time>10:00 AM</time></div>
               <div class="col-md-10">
                 <div class="speaker">
@@ -368,7 +320,7 @@
               </div>
             </div>
 
-            <div class="row schedule-item">
+            <div class="row animation-item">
               <div class="col-md-2"><time>11:00 AM</time></div>
               <div class="col-md-10">
                 <div class="speaker">
@@ -379,58 +331,14 @@
               </div>
             </div>
 
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>12:00 AM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/1.jpg" alt="Brenden Legros">
-                </div>
-                <h4>Libero corrupti explicabo itaque. <span>Brenden Legros</span></h4>
-                <p>Facere provident incidunt quos voluptas.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>02:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/4.jpg" alt="Jack Christiansen">
-                </div>
-                <h4>Qui non qui vel amet culpa sequi. <span>Jack Christiansen</span></h4>
-                <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>03:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/5.jpg" alt="Alejandrin Littel">
-                </div>
-                <h4>Quos ratione neque expedita asperiores. <span>Alejandrin Littel</span></h4>
-                <p>Eligendi quo eveniet est nobis et ad temporibus odio quo.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>04:00 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="<?php echo base_url();?>style/assets/img/speakers/6.jpg" alt="Willow Trantow">
-                </div>
-                <h4>Quo qui praesentium nesciunt <span>Willow Trantow</span></h4>
-                <p>Voluptatem et alias dolorum est aut sit enim neque veritatis.</p>
-              </div>
-            </div>
-
           </div>
-          <!-- End Schdule Day 2 -->
+          <!-- End Schdule Day 3 -->
 
         </div>
 
       </div>
 
-    </section><!-- End Schedule Section -->
+    </section><!-- End animation Section -->
 
     <!-- ======= Venue Section ======= -->
     <section id="venue">
