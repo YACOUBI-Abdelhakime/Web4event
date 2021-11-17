@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Animation extends CI_Controller {
+class Invite extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
@@ -8,12 +8,12 @@ class Animation extends CI_Controller {
 		$this->load->helper('url');
 	}
 	public function lister(){
-		$data['anims'] = $this->db_model->get_all_animation();
-		$data['date'] = date('Y-m-j H:i:s'); 
+
+		$data['invs'] = $this->db_model->get_all_invite(); 
 		// Chargement des 3 vues pour créer la page Web d’accueil
 		$this->load->view('templates/haut');
 		$this->load->view('templates/menu_visiteur.php');
-		$this->load->view('animations',$data);
+		$this->load->view('invites',$data);
 		$this->load->view('templates/bas'); 
 	}
 }

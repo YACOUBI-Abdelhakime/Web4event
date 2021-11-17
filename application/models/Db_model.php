@@ -20,7 +20,9 @@ class Db_model extends CI_Model {
         return $query->row();
     }
     public function get_all_animation(){
-		$query = $this->db->query("SELECT ani_id, ani_libelle, ani_description, ani_dateDebut, ani_dateFin, inv_nom, inv_discipline, lie_nom FROM t_invit_inv join t_invit_animation using(inv_id) RIGHT join t_animation_ani using(ani_id)  LEFT join t_lieu_lie using(lie_id) order by ani_dateDebut desc ;");
+		$query = $this->db->query("SELECT ani_id, ani_libelle, ani_description, ani_dateDebut, ani_dateFin, inv_nom, inv_discipline,lie_id, lie_nom FROM t_invit_inv 
+		join t_invit_animation using(inv_id) RIGHT join t_animation_ani using(ani_id)  LEFT join t_lieu_lie using(lie_id) order by ani_dateDebut desc ;");
+		
 		return $query->result_array();
 	}
 	public function get_all_invite(){

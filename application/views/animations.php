@@ -1,11 +1,11 @@
 <div class="nav-space"></div>
 <section id="actualites" class="section-with-bg">
 <div class="section-header">
-    <h2>Programmation des animations</h2>
+    <h2>Programmation des animations <?php //echo $date;?></h2>
 </div>
 
 <?php
-if ($anims != NULL){
+//if ($anims != NULL){
     ?>
     <table class="table table-bordered table-hover"> 
         <thead>
@@ -23,31 +23,66 @@ if ($anims != NULL){
 
     <?php
     // Boucle de parcours de toutes les lignes du résultat obtenu
+    $avenir = true;
+    $encours = true;
+    $passe = true;
     foreach($anims as $a){
+        //break;//comme si on a pes des animations
         // Affichage d’une ligne de tableau pour un pseudo non encore traité
         if (!isset($traite[$a["ani_id"]])){
             $inv_id=$a["ani_id"];
+            if($avenir && date_diff(date_create($a["ani_dateDebut"] ), date_create($date))->format('%R%a') < 0){
+                $avenir = false ;
+                echo "<tr><th colspan='7' class='center-txt bg-grey'>Animations à venir</th></tr>";
+            }
+            if($encours && date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a') <=0  &&  date_diff(date_create($a["ani_dateDebut"]), date_create($date))->format('%R%a')  >= 0){ 
+                $encours = false ;
+                echo "<tr><th colspan='7' class='center-txt bg-grey'>Animations en cours</th></tr>";
+            }
+            if($passe && date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a') > 0){ 
+                $passe = false ;
+                echo "<tr><th colspan='7' class='center-txt bg-grey'>Animations passées</th></tr>";
+            }
             echo "<tr>";
-            echo "<td>";echo $a["ani_libelle"];echo "</td>";
-            echo "<td>";echo $a["ani_description"];echo "</td>";
+            echo "<td>";echo $a["ani_libelle"]; ?> <br><a href="<?php echo base_url();?>index.php/animation/detaille/<?php echo $a['ani_id'];?>">détailles <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
+            echo "<td>";
+            echo $a["ani_description"];
+            /*if( date_diff(date_create($a["ani_dateDebut"] ), date_create($date))->format('%R%a') < 0){  
+                echo "a venir";
+            }
+            if( date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a') <=0  &&  date_diff(date_create($a["ani_dateDebut"]), date_create($date))->format('%R%a')  >= 0){  
+                echo "en cours";
+            }
+            if(date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a') > 0){  
+                echo "passés";
+            }
+            echo "<br> >d> ".date_diff(date_create($a["ani_dateDebut"] ), date_create($date))->format('%R%a');
+            echo "<br> >f> ".date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a');*/
+            echo "</td>";
             echo "<td>";echo $a["ani_dateDebut"];echo "</td>";
             echo "<td>";echo $a["ani_dateFin"];echo "</td>";
             echo "<td>";
             // Boucle d’affichage des actualités liées au pseudo
+            $invit = false;
             foreach($anims as $anim){
                 echo "<ul>";
                 if(strcmp($inv_id,$anim["ani_id"])==0){
                     if($anim["inv_nom"] != null){
+                        $invit = true;
                         echo "<li>";
                         echo $anim["inv_nom"]."</br>";
                         echo "</li>";
+                        
                     }else{
                         echo "Aucun invité";
                     }
                     
                 }
                 echo "</ul>";
-            }
+            } 
+            if($invit){
+                ?> <a href="<?php echo base_url();?>index.php/animation/galerie/<?php echo $a['ani_id'];?>">Galerie <i class="bi bi-arrow-up-right-square-fill"></i></a><?php 
+            }  
             echo "</td>";
             echo "<td>";
             // Boucle d’affichage des actualités liées au pseudo
@@ -67,7 +102,7 @@ if ($anims != NULL){
             }
             echo "</td>";
             if($a["lie_nom"] != null){
-                echo "<td>";echo $a["lie_nom"];echo "</td>";
+                echo "<td>";echo $a["lie_nom"];?> <br><a href="<?php echo base_url();?>index.php/lieu/detaille/<?php echo $a['lie_id'];?>">détailles <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
             }else{
                 echo "<td>";echo "Aucun lieu";echo "</td>";
             }
@@ -78,10 +113,25 @@ if ($anims != NULL){
             echo "</tr>";
         }
     }
-}else {
+    if($avenir){ 
+        $avenir = false ;
+        echo "<tr><td colspan='7' class='center-txt bg-grey'>Animations à venir</td></tr>";
+        echo "<tr><td colspan='7' class='center-txt'><h3>Aucune animation pour l'instant !</h3></td></tr>";
+    }
+    if($encours){ 
+        $encours = false ;
+        echo "<tr><td colspan='7' class='center-txt bg-grey'>Animations en cours</td></tr>";
+        echo "<tr><td colspan='7' class='center-txt'><h3>Aucune animation pour l'instant !</h3></td></tr>";
+    }
+    if($passe){ 
+        $passe = false ;
+        echo "<tr><td colspan='7' class='center-txt bg-grey'>Animations passées</td></tr>";
+        echo "<tr><td colspan='7' class='center-txt'><h3>Aucune animation pour l'instant !</h3></td></tr>";
+    }
+/*}else {
     echo "<br />";
     echo "<h3>Aucune animation pour l'instant !</h3>";
-}
+}*/
 ?>
     </tbody>
     </table>

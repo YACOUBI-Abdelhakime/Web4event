@@ -8,6 +8,10 @@ class Accueil extends CI_Controller {
 		$this->load->helper('url');
 	}
 	public function afficher(){ 
+		$file = base_url()."style/assets/event-info.txt";
+		$myfile = fopen($file, "r");
+		$data['info'] = fread($myfile,9999);
+		fclose($myfile);
 
 		$data['actus'] = $this->db_model->get_all_actualite(); 
 		// Chargement des 3 vues pour créer la page Web d’accueil

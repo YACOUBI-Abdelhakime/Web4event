@@ -43,7 +43,84 @@
   /**
    * Navbar links active state on scroll
    */
-  let navbarlinks = select('#navbar .scrollto', true)
+  /*document.getElementById("nhome").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nhome").classList.add('active');
+  });
+  document.getElementById("nabaout").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nabaout").classList.add('active');
+  });
+  document.getElementById("nactualites").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nactualites").classList.add('active');
+  });
+  document.getElementById("nprogrammation").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nprogrammation").classList.add('active');
+  });
+  document.getElementById("ninvites").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("ninvites").classList.add('active');
+  });
+  document.getElementById("nspeakers").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nspeakers").classList.add('active');
+  });
+  document.getElementById("nschedule").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nschedule").classList.add('active');
+  });
+  document.getElementById("nvenue").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nvenue").classList.add('active');
+  });
+  document.getElementById("nhotel").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nhotel").classList.add('active');
+  });
+  document.getElementById("ngallery").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("ngallery").classList.add('active');
+  });
+  document.getElementById("nsponsors").addEventListener("click", ()=>{
+        let navs = document.querySelectorAll('#navbar a');
+        navs.forEach(function(nav) {
+            nav.classList.remove('active');
+        });
+        document.getElementById("nsponsors").classList.add('active');
+  });*/
+  /*let navbarlinks = select('#navbar .scrollto', true)
   const navbarlinksActive = () => {
     let position = window.scrollY + 200
     navbarlinks.forEach(navbarlink => {
@@ -58,7 +135,7 @@
     })
   }
   window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
+  onscroll(document, navbarlinksActive)*/
 
   /**
    * Scrolls to an element with header offset

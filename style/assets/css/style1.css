@@ -1572,3 +1572,9 @@ h1, h2, h3, h4, h5, h6 {
 .nav-space{
   height: 90px !important;
 }
+.center-txt{
+  text-align: center !important;
+}
+.bg-grey{
+  background-color: #8c9fb3 !important;
+}
