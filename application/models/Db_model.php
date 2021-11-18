@@ -12,7 +12,7 @@ class Db_model extends CI_Model {
         return $query->row();
     }
     public function get_all_actualite(){
-		$query = $this->db->query("SELECT act_id, act_libelle, act_description, act_datePublication, act_image, org_id, org_nom, org_prenom FROM t_actualitee_act join t_organisateur_org using(org_id) where act_status='a' order by act_datePublication desc limit 5");
+		$query = $this->db->query("SELECT act_id, act_libelle, act_description, act_datePublication, act_image, act_etat,org_etat, org_id, org_nom, org_prenom FROM t_actualitee_act join t_organisateur_org using(org_id) where act_etat='a' and org_etat='a' order by act_datePublication desc limit 5");
 		return $query->result_array();
 	}
 	public function get_nb_compte(){
@@ -20,14 +20,28 @@ class Db_model extends CI_Model {
         return $query->row();
     }
     public function get_all_animation(){
-		$query = $this->db->query("SELECT ani_id, ani_libelle, ani_description, ani_dateDebut, ani_dateFin, inv_nom, inv_discipline,lie_id, lie_nom FROM t_invit_inv 
+		$query = $this->db->query("SELECT ani_id, ani_libelle, ani_description, ani_dateDebut, ani_dateFin, inv_nom, inv_discipline, inv_etat,lie_id, lie_nom FROM t_invit_inv 
 		join t_invit_animation using(inv_id) RIGHT join t_animation_ani using(ani_id)  LEFT join t_lieu_lie using(lie_id) order by ani_dateDebut desc ;");
 		
 		return $query->result_array();
 	}
 	public function get_all_invite(){
-        $query = $this->db->query("SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url FROM t_invit_inv join t_invit_reseau using(inv_id) join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a';");
+        //$query = $this->db->query("SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url FROM t_invit_inv join t_invit_reseau using(inv_id) join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_nom, res_libelle;");
+        $query = $this->db->query("SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url,pos_id, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM t_post_pos  left join t_passeport_pas USING(pas_id) RIGHT join t_invit_inv USING(inv_id) left join t_invit_reseau using(inv_id) RIGHT join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_id , pos_datePost desc,  res_libelle;");
         return $query->result_array();
     }
+	/*
+	ta9dimt :: SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url FROM t_invit_inv join t_invit_reseau using(inv_id) join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_nom, res_libelle;
+	 
+	SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM 
+	t_post_pos  left join 
+	t_passeport_pas USING(pas_id) RIGHT join 
+	t_invit_inv USING(inv_id) left join 
+	t_invit_reseau using(inv_id) RIGHT join 
+	t_reseauxSociaux_res USING(res_id) 
+	order by inv_id , pos_datePost,  res_libelle;
+	
+	
+	*/
 
 }

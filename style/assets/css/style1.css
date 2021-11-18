@@ -1578,3 +1578,40 @@ h1, h2, h3, h4, h5, h6 {
 .bg-grey{
   background-color: #8c9fb3 !important;
 }
+.card-img-top{
+  height: 20rem !important;
+}
+.card{
+  margin-top: 10px !important;
+}
+.reseaux{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reseaux a{
+  margin: 8px; 
+  /* color: #0d6efd; */
+}
+/* .reseaux a:hover{
+  color: #f82249;
+}
+.card-body > h3 > a{
+  color: #0e1b4d;
+}
+.card-body > h3 > a:hover{
+  color: #f82249;
+} */
+.posts {
+  display: flex;
+  justify-content:flex-start;
+  /* align-items:center; */
+  flex-direction: column;
+  color: #4869df !important;
+}
+.titlePosts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4869df !important;
+}

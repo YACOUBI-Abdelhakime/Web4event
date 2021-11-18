@@ -50,6 +50,7 @@
                 <tbody>
                 <?php
                   foreach($actus as $actu){ 
+                    //if($actu["act_etat"] == 'a' && $actu["org_etat"] == 'a'){
                     ?>
                     <tr>
                       <td><?php echo $actu["act_libelle"];?></td>
@@ -58,6 +59,7 @@
                       <td><?php echo $actu["org_nom"]." ".$actu["org_prenom"];?></td>
                     </tr>
                     <?php
+                    //}
                   }?>
                     </tbody>
                   </table>

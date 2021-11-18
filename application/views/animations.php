@@ -64,42 +64,50 @@
             echo "<td>";
             // Boucle d’affichage des actualités liées au pseudo
             $invit = false;
+            $pasinv = true;
+            echo "<ul>";
             foreach($anims as $anim){
-                echo "<ul>";
-                if(strcmp($inv_id,$anim["ani_id"])==0){
+                if(strcmp($inv_id,$anim["ani_id"])==0 && $anim["inv_etat"] == 'a'){
                     if($anim["inv_nom"] != null){
                         $invit = true;
+                        $pasinv = false;
                         echo "<li>";
                         echo $anim["inv_nom"]."</br>";
                         echo "</li>";
                         
-                    }else{
-                        echo "Aucun invité";
                     }
                     
                 }
-                echo "</ul>";
+               
             } 
+            
+            if($pasinv){
+                echo "Aucun invité";
+            } 
+            echo "</ul>";
             if($invit){
                 ?> <a href="<?php echo base_url();?>index.php/animation/galerie/<?php echo $a['ani_id'];?>">Galerie <i class="bi bi-arrow-up-right-square-fill"></i></a><?php 
             }  
             echo "</td>";
             echo "<td>";
             // Boucle d’affichage des actualités liées au pseudo
+            echo "<ul>";
             foreach($anims as $anim){
-                echo "<ul>";
-                if(strcmp($inv_id,$anim["ani_id"])==0){
+                if(strcmp($inv_id,$anim["ani_id"])==0 && $anim["inv_etat"] == 'a'){
+                    echo "<li>";
                     if($anim["inv_discipline"] != null){
-                        echo "<li>";
                         echo $anim["inv_discipline"]."</br>";
-                        echo "</li>";
                     }else{
-                        echo "...";
+                        echo ".......";
                     }
+                    echo "</li>";
                     
                 }
-                echo "</ul>";
             }
+            echo "</ul>";
+            if($pasinv){
+                echo "......";
+            } 
             echo "</td>";
             if($a["lie_nom"] != null){
                 echo "<td>";echo $a["lie_nom"];?> <br><a href="<?php echo base_url();?>index.php/lieu/detaille/<?php echo $a['lie_id'];?>">détailles <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
