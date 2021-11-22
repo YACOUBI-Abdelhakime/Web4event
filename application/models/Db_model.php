@@ -30,18 +30,13 @@ class Db_model extends CI_Model {
         $query = $this->db->query("SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url,pos_id, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM t_post_pos  left join t_passeport_pas USING(pas_id) RIGHT join t_invit_inv USING(inv_id) left join t_invit_reseau using(inv_id) RIGHT join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_id , pos_datePost desc,  res_libelle;");
         return $query->result_array();
     }
-	/*
-	ta9dimt :: SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url FROM t_invit_inv join t_invit_reseau using(inv_id) join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_nom, res_libelle;
-	 
-	SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM 
-	t_post_pos  left join 
-	t_passeport_pas USING(pas_id) RIGHT join 
-	t_invit_inv USING(inv_id) left join 
-	t_invit_reseau using(inv_id) RIGHT join 
-	t_reseauxSociaux_res USING(res_id) 
-	order by inv_id , pos_datePost,  res_libelle;
-	
-	
-	*/
+	public function connect_compte($username, $password){
+		$query =$this->db->query("SELECT com_login,com_password	FROM t_compt_com WHERE com_login='".$username."'	AND com_password='".$password."';");
+		if($query->num_rows() > 0){
+			return true;
+		}else{
+			return false;
+		}
+		}
 
 }

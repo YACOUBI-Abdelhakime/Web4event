@@ -75,6 +75,8 @@
       </div>
 
     </section><!-- End Actualites Section -->
+
+    
     <!-- ======= Actualites Section ======= -->
     <!--<section id="actualites" class="section-with-bg">
 
@@ -110,7 +112,7 @@
 
         </div>
       </div>
-
+      <?php /*
     </section>--><!-- End Actualites Section -->
     <!-- ======= Speakers Section ======= -->
     <section id="speakers">
@@ -791,9 +793,11 @@
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
+      
+      
 
-    </section><!-- End Buy Ticket Section -->
-
+    </section>--><!-- End Buy Ticket Section -->
+*/?>
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="section-bg">
 

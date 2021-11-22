@@ -20,10 +20,7 @@
                             $cpt_id=$a["inv_id"];?>
                             <div class="col-lg-4 col-md-6">
                                 <div class="card" >
-                                    <img class="card-img-top" src="<?php echo base_url().'../../'.$a['inv_photo']?>" alt="Card image cap">
-                                    <!-- <div class="hotel-img">
-                                        <img src="<?php //echo base_url().'../../'.$a['inv_photo']?>" alt="Hotel 1" class="img-fluid">
-                                    </div> -->
+                                    <img class="card-img-top" src="<?php echo base_url().''.$a['inv_photo']?>" alt="Card image cap">
                                     <div class="card-body">
                                         <h3><a href="#"><?php echo $a["inv_nom"];?></a></h3>
 
