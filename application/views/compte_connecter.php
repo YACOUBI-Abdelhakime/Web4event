@@ -1,17 +1,22 @@
 
 
-<div class="nav-space"></div>
-<section id="actualites" class="section-with-bg">
-<div class="section-header">
-    <h2>Connexion</h2>
-</div>
-    <?php echo validation_errors(); ?>
-    <?php echo form_open('compte/connecter'); ?>
-    <label>Saisissez vos identifiants ici :</label><br> <?php //echo $mdp.'<-:->'.$password; ?>
-    <input type="text" name="pseudo" required />
-    <input type="text" name="mdp" required/>
-    <input type="submit" value="Connexion"/>
-    </form>
-
+<div class="nav-space"></div> 
+<section id="contact" class="section-with-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="section-header">
+            <h2>Connexion</h2>
+        </div>
+		<?php
+			if($error != null){
+				echo "<div class='text-center'><h3>".$error."</h3></div>";
+			}
+			//echo "<div class='text-center'><h3> pas ou login pas correct !</h3></div>";
+		?>
+            <?php echo validation_errors(); ?>
+            <?php echo form_open('compte/connecter'); ?>
+				<div class="text-center"><input type="text" id="pseudo" class="fadeIn second" name="pseudo" placeholder="Identifiant"></div>
+				<div class="text-center"><input type="password" id="mdp" class="fadeIn third" name="mdp" placeholder="Mot de passe"></div>
+				<div class="text-center"><input type="submit" class="fadeIn fourth" value="Connexion"></div>
+			</form>
+	</div> 
 </section>
-

@@ -14,7 +14,7 @@
                 echo "Psudo"; 
             echo "</th>";
             echo "<td>";
-                echo $invite->com_login; 
+                echo $admin->com_login; 
             echo "</td>";
         echo "</tr>";
 
@@ -23,25 +23,25 @@
                 echo "Nom"; 
             echo "</th>";
             echo "<td>";
-                echo $invite->inv_nom; 
+                echo $admin->org_nom; 
             echo "</td>";
         echo "</tr>";
 
         echo "<tr>";
             echo "<th>";
-                echo "Discipline"; 
+                echo "Prénom"; 
             echo "</th>";
             echo "<td>";
-                echo $invite->inv_discipline; 
+                echo $admin->org_prenom; 
             echo "</td>";
         echo "</tr>";
 
         echo "<tr>";
             echo "<th>";
-                echo "Biographie"; 
+                echo "Email"; 
             echo "</th>";
             echo "<td>";
-                echo $invite->inv_biographie; 
+                echo  $admin->org_email; 
             echo "</td>";
         echo "</tr>";
 
@@ -57,14 +57,14 @@ if($error != null){
 
 ?>
     <?php echo validation_errors(); ?>
-    <?php echo form_open('invite/modifier'); ?>
+    <?php echo form_open('admin/modifier'); ?>
         <!-- <label for="lname">Mot de passe:</label><br> -->
         <div class="text-center"><input type="password" id="mdp" class="fadeIn second" name="mdp" placeholder="Mot de passe"></div>
         <!-- <label for="lname">Confirmation du mot de passe:</label><br> -->
         <div class="text-center"><input type="password" id="cnfmdp" class="fadeIn third" name="cnfmdp" placeholder="Confirmation du mot de passe"></div>
         <div class="text-center">
             <input type="submit" class="fadeIn fourth" value="Valider">
-            <a href="<?php echo base_url();?>index.php/invite/profile" ><button type="button" class="fadeIn fourth clrAnuler">  Annuler </button> </a>
+            <a href="<?php echo base_url();?>index.php/admin/profile" ><button type="button" class="fadeIn fourth clrAnuler">  Annuler </button> </a>
         </div>
     </form>
     

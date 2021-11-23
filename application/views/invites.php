@@ -68,9 +68,8 @@
                                             $postsExist = false;
                                             $postsId = array();
                                             $nbPosts = 0;
-                                            foreach($invs as $act){
-                                                
-                                                if($nbPosts< 3 && strcmp($cpt_id,$act["inv_id"])==0 && $act["pos_libelle"] != null && $act["pos_etat"] == 'a' && $act["pas_etat"] == 'a' && !in_array($act["pos_id"],$postsId) ){
+                                            foreach($invs as $act){                                               
+                                                if($nbPosts <= 3 && strcmp($cpt_id,$act["inv_id"])==0 && $act["pos_libelle"] != null && $act["pos_etat"] == 'a' && $act["pas_etat"] == 'a' && !in_array($act["pos_id"],$postsId) ){
                                                     array_push($postsId, $act["pos_id"]);
                                                     $nbPosts++;
                                                     $postsExist = true;

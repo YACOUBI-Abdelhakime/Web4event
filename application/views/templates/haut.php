@@ -36,14 +36,5 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center ">
-    <div class="container-fluid container-xxl d-flex align-items-center">
-
-      <div id="logo" class="me-auto">
-        <!-- Uncomment below if you prefer to use a text logo -->
-        <!-- <h1><a href="index.html">The<span>Event</span></a></h1>-->
-        <a href="<?php echo base_url();?>" class="scrollto"><img src="<?php echo base_url();?>style/assets/img/logo.png" alt="" title=""></a>
-      </div>
-
+  
       

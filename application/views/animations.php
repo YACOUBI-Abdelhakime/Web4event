@@ -47,17 +47,6 @@
             echo "<td>";echo $a["ani_libelle"]; ?> <br><a href="<?php echo base_url();?>index.php/animation/detaille/<?php echo $a['ani_id'];?>">détailles <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
             echo "<td>";
             echo $a["ani_description"];
-            /*if( date_diff(date_create($a["ani_dateDebut"] ), date_create($date))->format('%R%a') < 0){  
-                echo "a venir";
-            }
-            if( date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a') <=0  &&  date_diff(date_create($a["ani_dateDebut"]), date_create($date))->format('%R%a')  >= 0){  
-                echo "en cours";
-            }
-            if(date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a') > 0){  
-                echo "passés";
-            }
-            echo "<br> >d> ".date_diff(date_create($a["ani_dateDebut"] ), date_create($date))->format('%R%a');
-            echo "<br> >f> ".date_diff(date_create($a["ani_dateFin"] ), date_create($date))->format('%R%a');*/
             echo "</td>";
             echo "<td>";echo $a["ani_dateDebut"];echo "</td>";
             echo "<td>";echo $a["ani_dateFin"];echo "</td>";

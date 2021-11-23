@@ -30,6 +30,10 @@ class Db_model extends CI_Model {
         $query = $this->db->query("SELECT inv_id, inv_nom, inv_discipline, inv_biographie, inv_photo, com_login, res_libelle, res_url  FROM t_invit_inv LEFT JOIN t_invit_reseau USING(inv_id) JOIN t_reseauxSociaux_res USING(res_id) WHERE com_login='".$username."';");
         return $query->result_array();
     }
+	public function get_invitep($username){
+        $query = $this->db->query("SELECT inv_id, inv_nom, inv_discipline, inv_biographie, inv_photo, com_login FROM t_invit_inv  WHERE com_login='".$username."';");
+        return $query->row();
+    }
 	public function get_all_invite(){
         $query = $this->db->query("SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url,pos_id, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM t_post_pos  left join t_passeport_pas USING(pas_id) RIGHT join t_invit_inv USING(inv_id) left join t_invit_reseau using(inv_id) RIGHT join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_id , pos_datePost desc,  res_libelle;");
         return $query->result_array();
@@ -60,6 +64,13 @@ class Db_model extends CI_Model {
 		$query =$this->db->simple_query("Update t_compt_com set com_password = '".$password."' where com_login = '".$username."';");
 		return $query;
 	}
+	//------------------------------------------------------------------------------------------
+	//                                  MODEL ADMIN
+	//------------------------------------------------------------------------------------------ 
+	public function get_admin($username){
+        $query = $this->db->query("SELECT com_login, org_nom,org_prenom, org_email FROM t_organisateur_org  WHERE com_login='".$username."';");
+        return $query->row();
+    }
 	//------------------------------------------------------------------------------------------
 	//                                  FIIIIIIIIIIIIIIIIIIN
 	//------------------------------------------------------------------------------------------

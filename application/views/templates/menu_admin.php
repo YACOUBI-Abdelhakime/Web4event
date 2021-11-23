@@ -1,5 +1,5 @@
 <!-- ======= Header ======= -->
-<header id="header" class="d-flex align-items-center " style="background-color:#972525fa;">
+<header id="header" class="d-flex align-items-center " style="background-color:#16328d;">
     <div class="container-fluid container-xxl d-flex align-items-center">
 
       <div id="logo" class="me-auto">
@@ -15,7 +15,7 @@
           <li><a id="nactualites" class="nav-link scrollto" href="<?php echo base_url();?>#actualites">Actualités</a></li>
           <li><a id="nprogrammation" class="nav-link scrollto" href="<?php echo base_url();?>index.php/animation/lister">Programmation</a></li>
           <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/invite/lister">Invités</a></li>
-          <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/invite/profile">Profile</a></li>
+          <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/admin/profile">Profile</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
