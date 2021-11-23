@@ -1,54 +1,3 @@
-<?php /*<div class="nav-space"></div>
-<section id="hotels" class="section-with-bg">
-
-    <div class="container" data-aos="fade-up">
-    <div class="section-header">
-        <h2>Profile</h2>
-    </div>
-
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-    
-
-        <?php
-        if($invite != NULL) {
-            ?>
-            <table class="table table-striped table-bordered table-hover">
-                <tbody>
-                    <tr>
-                        <th>Psudo</th>
-                        <td><?php echo $invite->com_login;?></td>
-                    </tr>
-                    <tr>
-                        <th>Nom et Prénom</th>
-                        <td><?php echo $invite->inv_nom;?></td>
-                    </tr>
-                    <tr>
-                        <th>Discipline</th>
-                        <td><?php echo $invite->inv_discipline;?></td>
-                    </tr>
-                    <tr>
-                        <th>Biographie</th>
-                        <td><?php echo '<b>'.$invite->inv_nom.'</b> '.$invite->inv_biographie;?></td>
-                    </tr>
-                    <tr>
-                        <th>Reseaux Sociaux</th>
-                        <td>facebooc : ..... <br>twitter : ..... </td>
-                    </tr>
-                </tbody>
-            </table>
-        <?php
-        }else {
-            ?>
-            <h3>Aucune information pour l'instant !</h3>
-            <?php
-        }
-        ?>
-
-    </div>
-    </div>
-
-</section> */?>
-
 <div class="nav-space"></div>
 <section id="actualites" class="section-with-bg">
 <div class="section-header">
@@ -106,17 +55,20 @@
                 echo "</th>";
                 echo "<td>";
                 // Boucle d’affichage des actualités liées au pseudo
-                $invit = false;
-                $pasinv = true;
+                $resNotexist = true;
                 echo "<ul>";
                     foreach($invite as $inv){
                         if(strcmp($inv_id,$inv["inv_id"])==0){
+                            $resNotexist = false;
                             echo "<li>";
                             echo $inv["res_libelle"]." : ".$inv["res_url"];
                             echo "</li>";                           
                         }
                     } 
                 echo "</ul>"; 
+                if($resNotexist){
+                    echo "<h5>Aucune Reseaux Sociaux</h5>";
+                }
                 echo "</td>";
             echo "</tr>";
             $traite[$a["inv_id"]]=1;
@@ -125,4 +77,6 @@
 ?>
     </tbody>
     </table>
+    <!-- <div class="text-center"><button type="button" class="btn"> <a src="<?php //echo base_url();?>index.php/invite/modifier" > Modifier </a></button></div> -->
+    <div class="text-center"> <a href="<?php echo base_url();?>index.php/invite/modifier" ><button type="button" class="btn btn-primary clr"> Modifier </button></a> </div>
 </section>
