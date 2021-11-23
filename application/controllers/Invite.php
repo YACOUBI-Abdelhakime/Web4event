@@ -16,5 +16,14 @@ class Invite extends CI_Controller {
 		$this->load->view('invites',$data);
 		$this->load->view('templates/bas'); 
 	}
+	public function profile(){
+		$username = $this->session->userdata('username');
+		$data['invite'] = $this->db_model->get_invite($username); 
+		// Chargement des 3 vues pour créer la page Web d’accueil
+		$this->load->view('templates/haut');
+		$this->load->view('templates/menu_invite.php');
+		$this->load->view('invite-profile',$data);
+		$this->load->view('templates/bas'); 
+	}
 }
 ?>

@@ -32,21 +32,38 @@
 				$this->load->view('templates/bas');
 			}else{
 				$username = $this->input->post('pseudo');
-				$password = $this->input->post('mdp');
-				if($this->db_model->connect_compte($username,$password)){
-					$session_data = array('username' => $username );
+				$mdp = $this->input->post('mdp');
+				$salt = "MY_sel@1999";
+        		$password = hash('sha256', $salt.$mdp);
+				//$data['mdp'] = $mdp;
+				//$data['password'] = $password;
+				$res = $this->db_model->connect_compte($username,$password);
+				if($res[0]){
+					$session_data = array('username' => $username, 'status'=>$res[1]->com_status );
 					$this->session->set_userdata($session_data);
 					$this->load->view('templates/haut');
-					$this->load->view('templates/menu_visiteur');
+					$this->load->view('templates/menu_invite');
 					$this->load->view('compte_menu');
 					$this->load->view('templates/bas');
 				}else{
 					$this->load->view('templates/haut');
 					$this->load->view('templates/menu_visiteur');
-					$this->load->view('compte_connecter');
+					$this->load->view('compte_connecter'/*,$data*/);
 					$this->load->view('templates/bas');
 				}
 			}
+		}
+		public function test(){
+
+			$this->load->view('templates/haut');
+			$this->load->view('templates/menu_visiteur');
+			$this->load->view('compte_menu');
+			$this->load->view('templates/bas');
+		}
+
+		public function deconnecter(){
+			$this->session->sess_destroy();
+			redirect(base_url());
 		}
 
 
