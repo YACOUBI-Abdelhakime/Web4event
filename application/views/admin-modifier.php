@@ -43,7 +43,7 @@
             echo "<td>";
                 echo  $admin->org_email; 
             echo "</td>";
-        echo "</tr>";
+        echo "</tr>"; 
 
     
 ?>

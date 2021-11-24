@@ -42,7 +42,7 @@ class Db_model extends CI_Model {
 	//                                  MODEL COMPTE
 	//------------------------------------------------------------------------------------------ 
 	public function get_all_compte(){
-		$query = $this->db->query("SELECT com_login FROM t_compt_com;");
+		$query = $this->db->query("select com_login, com_status,com_etat, inv_nom,org_nom,org_prenom,org_email from t_organisateur_org RIGHT join t_compt_com using(com_login) left join t_invit_inv using(com_login) order by com_status desc,com_etat;");
 		return $query->result_array();
 	}
 	public function get_nb_compte(){
@@ -70,6 +70,13 @@ class Db_model extends CI_Model {
 	public function get_admin($username){
         $query = $this->db->query("SELECT com_login, org_nom,org_prenom, org_email FROM t_organisateur_org  WHERE com_login='".$username."';");
         return $query->row();
+    }
+	//------------------------------------------------------------------------------------------
+	//                                  MODEL ADMIN
+	//------------------------------------------------------------------------------------------ 
+	public function get_all_lieux(){
+        $query = $this->db->query("SELECT lie_id, lie_nom, lie_description, ser_id, ser_nom FROM t_lieu_lie left join t_servic_ser using(lie_id);");
+        return $query->result_array();
     }
 	//------------------------------------------------------------------------------------------
 	//                                  FIIIIIIIIIIIIIIIIIIN
