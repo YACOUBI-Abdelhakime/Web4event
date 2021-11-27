@@ -81,7 +81,7 @@ class Admin extends CI_Controller {
     public function comptes(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');
-		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+		$session_life =  date_diff(date_create( $this->session->userdata('start') ), date_create( date('H:i:s') ))->format('%r%i') ;
 
 		if($username != null&& $status == 'o' && $session_life < 10){					
 			$_SESSION['start'] = date('H:i:s');	

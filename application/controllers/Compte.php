@@ -71,17 +71,24 @@
 		public function home(){			
 			$username = $this->session->userdata('username');
 			$status = $this->session->userdata('status');
-			$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+			$starttime = $this->session->userdata('start');
+			if($starttime == null){
+				$session_life = null;
+			}else{
+				$session_life =  date_diff(date_create( $starttime ), date_create( date('H:i:s') ))->format('%r%i') ;
+			}
 
-			if($session_life < 10){
+			if($session_life!= null && $session_life < 10){
 				if($username != null && $status == 'i' ){
+					$data['start'] = date('H:i:s');
 					$invite = $this->db_model->get_invitep($username);
 					$data['nom'] = $invite->inv_nom;
 					$this->load->view('templates/haut');
 					$this->load->view('templates/menu_invite');
 					$this->load->view('compte_menu',$data);
 					$this->load->view('templates/bas');
-				}else{
+				}else if($username != null && $status == 'o' ){
+					$data['start'] = date('H:i:s');
 					$admin = $this->db_model->get_admin($username);
 					$data['nom'] = $admin->org_prenom.' '.$admin->org_nom;
 					$this->load->view('templates/haut');

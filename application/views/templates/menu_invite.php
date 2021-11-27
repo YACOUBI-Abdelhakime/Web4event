@@ -16,6 +16,7 @@
           <li><a id="nprogrammation" class="nav-link scrollto" href="<?php //echo base_url();?>index.php/animation/lister">Programmation</a></li>
           <li><a id="ninvites" class="nav-link scrollto" href="<?php //echo base_url();?>index.php/invite/lister">Invités</a></li> -->
           <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/invite/profile">Profile</a></li>
+          <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/invite/passeport">Passeport</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

@@ -80,11 +80,14 @@ class Db_model extends CI_Model {
         $query = $this->db->query("SELECT com_login, org_nom,org_prenom, org_email FROM t_organisateur_org  WHERE com_login='".$username."';");
         return $query->row();
     }
-	//------------------------------------------------------------------------------------------
-	//                                  MODEL ADMIN
-	//------------------------------------------------------------------------------------------ 
+
 	public function get_all_lieux(){
         $query = $this->db->query("SELECT lie_id, lie_nom, lie_description, ser_id, ser_nom FROM t_lieu_lie left join t_servic_ser using(lie_id);");
+        return $query->result_array();
+    }
+	 
+	public function get_passeport($username){
+        $query = $this->db->query("SELECT pas_id,pas_mdp,pas_etat from t_passeport_pas join t_invit_inv using(inv_id)  WHERE com_login='".$username."';");
         return $query->result_array();
     }
 	//------------------------------------------------------------------------------------------
