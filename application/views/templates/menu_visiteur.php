@@ -14,6 +14,7 @@
           <li><a id="nactualites" class="nav-link scrollto" href="<?php echo base_url();?>#actualites">Actualités</a></li>
           <li><a id="nprogrammation" class="nav-link scrollto" href="<?php echo base_url();?>index.php/animation/lister">Programmation</a></li>
           <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/invite/lister">Invités</a></li>
+          <li><a id="nprogrammation" class="nav-link scrollto" href="<?php echo base_url();?>index.php/lieux/lister">Lieux</a></li>
           <!-- <li><a id="nspeakers" class="nav-link scrollto" href="#speakers">Speakers</a></li>
           <li><a id="nschedule" class="nav-link scrollto" href="#schedule">Schedule</a></li>
           <li><a id="nvenue" class="nav-link scrollto" href="#venue">Venue</a></li>

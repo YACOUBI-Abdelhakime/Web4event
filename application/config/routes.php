@@ -52,4 +52,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'accueil/afficher';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['compte_creer'] = 'compte/creer';
 

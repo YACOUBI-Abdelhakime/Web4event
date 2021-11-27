@@ -10,8 +10,10 @@ class Admin extends CI_Controller {
 	public function profile(){
 		$username = $this->session->userdata('username'); 
 		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
 
-		if($username != null && $status == 'o'){
+		if($username != null && $status == 'o' && $session_life < 10){
+			$_SESSION['start'] = date('H:i:s');
 			$data['admin'] = $this->db_model->get_admin($username); 
 			$this->load->view('templates/haut');
 			$this->load->view('templates/menu_admin');
@@ -24,8 +26,10 @@ class Admin extends CI_Controller {
 	public function modifier(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
 
-		if($username != null&& $status == 'o'){		
+		if($username != null&& $status == 'o' && $session_life < 10){				
+			$_SESSION['start'] = date('H:i:s');	
 			$this->load->helper('form');
 			$this->load->library('form_validation');
 			$data['admin'] = $this->db_model->get_admin($username);
@@ -77,8 +81,10 @@ class Admin extends CI_Controller {
     public function comptes(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
 
-		if($username != null&& $status == 'o'){	
+		if($username != null&& $status == 'o' && $session_life < 10){					
+			$_SESSION['start'] = date('H:i:s');	
             $data['comptes'] = $this->db_model->get_all_compte();
 
             $this->load->view('templates/haut');
@@ -91,20 +97,39 @@ class Admin extends CI_Controller {
         }
     }
 	public function programmation(){
-		$data['anims'] = $this->db_model->get_all_animation();
-		$data['date'] = date('Y-m-j H:i:s'); 
-		// Chargement des 3 vues pour créer la page Web d’accueil
-		$this->load->view('templates/haut');
-		$this->load->view('templates/menu_admin');
-		$this->load->view('admin-programmation',$data);
-		$this->load->view('templates/bas'); 
+		$username = $this->session->userdata('username');
+		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+
+		if($username != null&& $status == 'o' && $session_life < 10){			
+			$_SESSION['start'] = date('H:i:s');	
+			$data['anims'] = $this->db_model->get_all_animation();
+			$data['date'] = date('Y-m-j H:i:s'); 
+
+			$this->load->view('templates/haut');
+			$this->load->view('templates/menu_admin');
+			$this->load->view('admin-programmation',$data);
+			$this->load->view('templates/bas'); 
+		}else{
+			redirect(base_url().'index.php/compte/connecter');
+		}
 	}
 	public function lieux(){
-		$data['lieux'] = $this->db_model->get_all_lieux();
-		$this->load->view('templates/haut');
-		$this->load->view('templates/menu_admin');
-		$this->load->view('admin-lieux',$data);
-		$this->load->view('templates/bas'); 
+		$username = $this->session->userdata('username');
+		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+
+		if($username != null&& $status == 'o' && $session_life < 10){			
+			$_SESSION['start'] = date('H:i:s');	
+			$data['lieux'] = $this->db_model->get_all_lieux();
+
+			$this->load->view('templates/haut');
+			$this->load->view('templates/menu_admin');
+			$this->load->view('admin-lieux',$data);
+			$this->load->view('templates/bas'); 
+		}else{
+			redirect(base_url().'index.php/compte/connecter');
+		}
 	}
 }
 ?>

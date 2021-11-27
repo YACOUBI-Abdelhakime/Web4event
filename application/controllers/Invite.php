@@ -8,7 +8,7 @@ class Invite extends CI_Controller {
 		$this->load->helper('url');
 	}
 	public function lister(){
-
+		//FONCTION POUR LES VISITEUR
 		$data['invs'] = $this->db_model->get_all_invite(); 
 		$this->load->view('templates/haut');
 		$this->load->view('templates/menu_visiteur.php');
@@ -18,8 +18,9 @@ class Invite extends CI_Controller {
 	public function profile(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
 
-		if($username != null && $status == 'i'){
+		if($username != null && $status == 'i' && $session_life < 10){
 			$data['invite'] = $this->db_model->get_invite($username); 
 			$this->load->view('templates/haut');
 			$this->load->view('templates/menu_invite.php');
@@ -32,8 +33,9 @@ class Invite extends CI_Controller {
 	public function modifier(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
 
-		if($username == null && $status == 'i'){
+		if($username == null && ($status == 'o' || $status==null ) && $session_life >= 10){
 			redirect(base_url().'index.php/compte/connecter');
 		}else{		
 			$this->load->helper('form');

@@ -38,9 +38,11 @@
 				$password = hash('sha256', $salt.$mdp);
 				$res = $this->db_model->connect_compte($username,$password);
 				if($res[0]){
-					$session_data = array('username' => $username, 'status'=>$res[1]->com_status );
+					$time = date('H:i:s');
+					$session_data = array('username' => $username, 'status'=>$res[1]->com_status, 'start'=>$time );
 					$this->session->set_userdata($session_data);
-					if($res[1]->com_status == 'i'){
+					redirect(base_url().'index.php/compte/home');
+					/*if($res[1]->com_status == 'i'){
 						$this->load->view('templates/haut');
 						$this->load->view('templates/menu_invite');
 						$this->load->view('compte_menu');
@@ -50,7 +52,7 @@
 						$this->load->view('templates/menu_admin');
 						$this->load->view('compte_menu');
 						$this->load->view('templates/bas');
-					}
+					}*/
 				}else{
 					$data['error'] = 'Identifiants erronés ou inexistants !'; 
 					$this->load->view('templates/haut');
@@ -66,11 +68,40 @@
 				$this->load->view('templates/bas');
 			}
 		}
+		public function home(){			
+			$username = $this->session->userdata('username');
+			$status = $this->session->userdata('status');
+			$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+
+			if($session_life < 10){
+				if($username != null && $status == 'i' ){
+					$invite = $this->db_model->get_invitep($username);
+					$data['nom'] = $invite->inv_nom;
+					$this->load->view('templates/haut');
+					$this->load->view('templates/menu_invite');
+					$this->load->view('compte_menu',$data);
+					$this->load->view('templates/bas');
+				}else{
+					$admin = $this->db_model->get_admin($username);
+					$data['nom'] = $admin->org_prenom.' '.$admin->org_nom;
+					$this->load->view('templates/haut');
+					$this->load->view('templates/menu_admin');
+					$this->load->view('compte_menu',$data);
+					$this->load->view('templates/bas');
+				}
+			}else{
+				redirect(base_url().'index.php/compte/connecter');
+			}
+		}
 		public function test(){
+			$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+			$data['life'] = $session_life;
+			$data['timeout'] = $_SESSION['start'];
+			$data['time'] = date('H:i:s');
 
 			$this->load->view('templates/haut');
 			$this->load->view('templates/menu_visiteur');
-			$this->load->view('compte_menu');
+			$this->load->view('compte_menu',$data);
 			$this->load->view('templates/bas');
 		}
 
@@ -78,6 +109,27 @@
 			$this->session->sess_destroy();
 			redirect(base_url().'index.php/compte/connecter');
 		}
+		public function creer(){
+			$this->load->helper('form');
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('id', 'id', 'required');
+			$this->form_validation->set_rules('mdp', 'mdp', 'required');			
+			$data['error'] = null;
+
+			if ($this->form_validation->run() == FALSE){
+				$this->load->view('templates/haut');
+				$this->load->view('templates/menu_admin');
+				$this->load->view('compte_creer',$data);
+				$this->load->view('templates/bas');
+			}else{
+				$this->db_model->set_compte();
+				$this->load->view('templates/haut');
+				$this->load->view('templates/menu_admin');
+				$this->load->view('compte_succes');
+				$this->load->view('templates/bas');
+			}
+		}
+
 
 
 	}

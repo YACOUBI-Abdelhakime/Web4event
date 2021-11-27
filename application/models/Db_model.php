@@ -64,6 +64,15 @@ class Db_model extends CI_Model {
 		$query =$this->db->simple_query("Update t_compt_com set com_password = '".$password."' where com_login = '".$username."';");
 		return $query;
 	}
+	public function set_compte(){
+		$this->load->helper('url');
+		$id=$this->input->post('id');
+		$mdp=$this->input->post('mdp');
+		$req="INSERT INTO t_compt_com VALUES ('".$id."','".$mdp."',i,'a');";//choisir dans le formulair i ou o
+		$query = $this->db->query($req);
+		return ($query);
+	}
+
 	//------------------------------------------------------------------------------------------
 	//                                  MODEL ADMIN
 	//------------------------------------------------------------------------------------------ 
