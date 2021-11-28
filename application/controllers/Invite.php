@@ -15,6 +15,14 @@ class Invite extends CI_Controller {
 		$this->load->view('invites',$data);
 		$this->load->view('templates/bas'); 
 	}
+	public function detaille($id){
+		//FONCTION POUR LES VISITEUR
+		$data['invite'] = $this->db_model->get_inviteid($id); 
+		$this->load->view('templates/haut');
+		$this->load->view('templates/menu_visiteur.php');
+		$this->load->view('info-invite',$data);
+		$this->load->view('templates/bas'); 
+	}
 	public function profile(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');

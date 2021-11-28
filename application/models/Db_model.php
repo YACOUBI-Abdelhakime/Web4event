@@ -23,11 +23,21 @@ class Db_model extends CI_Model {
 		
 		return $query->result_array();
 	}
+	public function get_animation($id){
+		$query = $this->db->query("SELECT ani_id, ani_libelle, ani_description, ani_dateDebut, ani_dateFin, inv_nom, inv_discipline, inv_etat,lie_id, lie_nom FROM t_invit_inv 
+		join t_invit_animation using(inv_id) RIGHT join t_animation_ani using(ani_id)  LEFT join t_lieu_lie using(lie_id) where ani_id='".$id."' order by ani_dateDebut desc ;");
+		
+		return $query->result_array();
+	}
 	//------------------------------------------------------------------------------------------
 	//                                  MODEL INVITE
 	//------------------------------------------------------------------------------------------
 	public function get_invite($username){
         $query = $this->db->query("SELECT inv_id, inv_nom, inv_discipline, inv_biographie, inv_photo, com_login, res_libelle, res_url  FROM t_invit_inv LEFT JOIN t_invit_reseau USING(inv_id) JOIN t_reseauxSociaux_res USING(res_id) WHERE com_login='".$username."';");
+        return $query->result_array();
+    }
+	public function get_inviteid($id){
+        $query = $this->db->query("SELECT inv_id, inv_nom, inv_discipline, inv_biographie, inv_photo, com_login, res_libelle, res_url  FROM t_invit_inv LEFT JOIN t_invit_reseau USING(inv_id) JOIN t_reseauxSociaux_res USING(res_id) WHERE inv_id='".$id."';");
         return $query->result_array();
     }
 	public function get_invitep($username){

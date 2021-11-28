@@ -16,5 +16,12 @@ class Animation extends CI_Controller {
 		$this->load->view('animations',$data);
 		$this->load->view('templates/bas'); 
 	}
+	public function detaille($id){
+		$data['anim'] = $this->db_model->get_animation($id); 
+		$this->load->view('templates/haut');
+		$this->load->view('templates/menu_visiteur.php');
+		$this->load->view('info-animation',$data);
+		$this->load->view('templates/bas'); 
+	}
 }
 ?>

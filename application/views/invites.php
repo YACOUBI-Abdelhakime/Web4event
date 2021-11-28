@@ -22,7 +22,7 @@
                                 <div class="card" >
                                     <img class="card-img-top" src="<?php echo base_url().''.$a['inv_photo']?>" alt="Card image cap">
                                     <div class="card-body">
-                                        <h3><a href="#"><?php echo $a["inv_nom"];?></a></h3>
+                                        <h3><a href="<?php echo base_url().'index.php/invite/detaille/'.$a['inv_id'];?>"><?php echo $a["inv_nom"];?></a></h3>
 
                                         <div class="reseaux">
                                         <?php
