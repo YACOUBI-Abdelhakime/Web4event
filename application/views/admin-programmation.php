@@ -8,7 +8,7 @@
 //if ($anims != NULL){
     ?>
     
-    <div class="text-center"> <a href="<?php echo base_url();?>index.php/admin/modifier" ><button type="button" class="btn btn-primary clr"> Ajouter une animation </button></a> </div><br>
+    <div class="text-center"> <a href="<?php echo base_url();?>index.php/animation/ajouter" ><button type="button" class="btn btn-primary clr"> Ajouter une animation </button></a> </div><br>
     <table class="table table-bordered  table-hover"> 
         <thead>
             <tr>
@@ -111,7 +111,7 @@
             echo "<td>";?>
 
             <a href="<?php echo base_url();?>index.php/animation/modifier/<?php echo $a['ani_id'];?>">Modifier <i class="bi bi-pencil-square"></i></a>
-            <br><a href="<?php echo base_url();?>index.php/animation/supprimer<?php echo $a['ani_id'];?>">Supprimer <i class="bi bi-trash-fill"></i></a>
+            <br><a href="<?php echo base_url();?>index.php/animation/supprimer/<?php echo $a['ani_id'];?>">Supprimer <i class="bi bi-trash-fill"></i></a>
             
            <?php echo "</td>";
             

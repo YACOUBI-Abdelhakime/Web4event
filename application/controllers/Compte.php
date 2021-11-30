@@ -24,6 +24,7 @@
 			$this->load->library('form_validation');
 			// $this->form_validation->set_rules('pseudo', 'pseudo', 'required');
 			// $this->form_validation->set_rules('mdp', 'mdp', 'required');
+			
 
 			if($this->input->post('mdp') == null && $this->input->post('pseudo') == null){
 				$data['error'] = null; 

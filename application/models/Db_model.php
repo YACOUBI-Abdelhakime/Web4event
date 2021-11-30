@@ -29,6 +29,10 @@ class Db_model extends CI_Model {
 		
 		return $query->result_array();
 	}
+	public function delete_animation($id){
+		$query =$this->db->simple_query("call delete_animation(".$id.")");
+		return $query;
+	}
 	//------------------------------------------------------------------------------------------
 	//                                  MODEL INVITE
 	//------------------------------------------------------------------------------------------

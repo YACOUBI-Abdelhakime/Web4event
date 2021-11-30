@@ -3,7 +3,7 @@
 
       <div class="container" data-aos="fade-up">
         <div class="section-header">
-          <h2>Passeports</h2>
+          <h2>Passeports et postes</h2>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
