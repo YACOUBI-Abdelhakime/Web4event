@@ -95,7 +95,7 @@ class Admin extends CI_Controller {
 		}else{
             redirect(base_url().'index.php/compte/connecter');
         }
-    }
+    }/*
 	public function programmation(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');
@@ -113,7 +113,7 @@ class Admin extends CI_Controller {
 		}else{
 			redirect(base_url().'index.php/compte/connecter');
 		}
-	}
+	}*/
 	public function lieux(){
 		$username = $this->session->userdata('username');
 		$status = $this->session->userdata('status');

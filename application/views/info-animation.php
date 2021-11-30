@@ -74,38 +74,8 @@
                         }
                     } 
                 echo "</ul>"; 
-                /*$reseauxExist = false;
-                $facebook = true;
-                $twitter = true;
-                $linkedin = true;
-                echo '<div class="text-center">';
-                foreach($invite as $act){
-                    if(strcmp($inv_id,$act["inv_id"])==0){
-
-                        if($twitter && $act["res_libelle"] == "Twitter"){
-                            $reseauxExist = true;
-                            $twitter = false;
-                            ?>
-                            <a href="<?php echo $act["res_url"];?>"><i class="bi bi-twitter"></i></a>
-                            <?php
-                        }else if($facebook && $act["res_libelle"] == "Facebook"){
-                            $reseauxExist = true;
-                            $facebook = false;
-                            ?>
-                            <a href="<?php echo $act["res_url"];?>"><i class="bi bi-facebook"></i></a>
-                            <?php
-                        }else if($linkedin && $act["res_libelle"] == "LinkedIn"){
-                            $reseauxExist = true;
-                            $linkedin = false;
-                            ?>
-                            <a href="<?php echo $act["res_url"];?>"><i class="bi bi-linkedin"></i></a>
-                            <?php
-                        }
-                    }
-                }
-                echo "</div>";*/
                 if($Notexist){
-                    echo "<h5>Aucune Invité</h5>";
+                    echo "<h5>Aucune Invité pour l'instant !</h5>";
                 }
                 echo "</td>";
             echo "</tr>";
@@ -114,7 +84,12 @@
                     echo "Lieu"; 
                 echo "</th>";
                 echo "<td>";
+                if($a["lie_nom"] != null){
                     echo $a["lie_nom"]; 
+                }else{
+                    echo "<h5>Aucune Lieu pour l'instant !</h5>"; 
+                }
+                    
                 echo "</td>";
             echo "</tr>";
             $traite[$a["ani_id"]]=1;

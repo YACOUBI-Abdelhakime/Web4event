@@ -97,7 +97,7 @@ class Db_model extends CI_Model {
     }
 	 
 	public function get_passeport($username){
-        $query = $this->db->query("SELECT pas_id,pas_mdp,pas_etat from t_passeport_pas join t_invit_inv using(inv_id)  WHERE com_login='".$username."';");
+        $query = $this->db->query("SELECT pas_id, pas_etat,pos_libelle, pos_datePost, pos_etat from t_post_pos right join t_passeport_pas using(pas_id) join t_invit_inv using(inv_id)  WHERE pas_etat='a' and com_login='".$username."' order by pas_id, pos_datePost desc;");
         return $query->result_array();
     }
 	//------------------------------------------------------------------------------------------

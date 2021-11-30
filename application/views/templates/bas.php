@@ -16,7 +16,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <img src="<?php echo base_url();?>style/assets/img/logo.png" alt="TheEvenet">
+            <img src="<?php //echo base_url();?>style/assets/img/logo.png" alt="TheEvenet">
             <p>In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis accusamus repellat cumque.</p>
           </div>
 
@@ -67,7 +67,7 @@
     </div>
   <!-- *********************************************************************************** -->
     <div class="container">
-      <div class="text-center"><img style="width : 13rem;margin-top:20px;" src="<?php echo base_url();?>style/assets/img/logo.png" alt="TheEvenet"></div>
+      <!-- <div class="text-center"><img style="width : 13rem;margin-top:20px;" src="<?php //echo base_url();?>style/assets/img/logo.png" alt="TheEvenet"></div> -->
       <div class="copyright">
         &copy; Copyright <strong>UBO</strong>. All Rights Reserved
       </div>
