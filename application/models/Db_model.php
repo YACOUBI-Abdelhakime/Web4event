@@ -100,10 +100,29 @@ class Db_model extends CI_Model {
         return $query->result_array();
     }
 	 
+
+	//------------------------------------------------------------------------------------------
+	//                                  MODEL PASSEPORT
+	//------------------------------------------------------------------------------------------
 	public function get_passeport($username){
-        $query = $this->db->query("SELECT pas_id, pas_etat,pos_libelle, pos_datePost, pos_etat from t_post_pos right join t_passeport_pas using(pas_id) join t_invit_inv using(inv_id)  WHERE pas_etat='a' and com_login='".$username."' order by pas_id, pos_datePost desc;");
+        $query = $this->db->query("SELECT pas_id, pas_etat,pos_id,pos_libelle, pos_datePost, pos_etat from t_post_pos right join t_passeport_pas using(pas_id) join t_invit_inv using(inv_id)  WHERE pas_etat='a' and com_login='".$username."' order by pas_id, pos_datePost desc;");
         return $query->result_array();
     }
+	public function add_passeport($pasId,$pasMdp,$comLogin){
+		$query =$this->db->simple_query("call add_passeport('".$pasId."','".$pasMdp."','".$comLogin."')");
+		return $query;
+	}
+	public function desactiver_passe($pasId){
+		$query =$this->db->simple_query("UPDATE t_passeport_pas set pas_etat = 'd' WHERE pas_id = '".$pasId."';");
+		return $query;
+	}
+	//------------------------------------------------------------------------------------------
+	//                                  MODEL PASSEPORT
+	//------------------------------------------------------------------------------------------
+	public function desactiver_post($postId){
+		$query =$this->db->simple_query("UPDATE t_post_pos set pos_etat = 'd' WHERE pos_id = ".$postId.";");
+		return $query;
+	}
 	//------------------------------------------------------------------------------------------
 	//                                  FIIIIIIIIIIIIIIIIIIN
 	//------------------------------------------------------------------------------------------

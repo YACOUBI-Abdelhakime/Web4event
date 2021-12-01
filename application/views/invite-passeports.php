@@ -6,9 +6,12 @@
           <h2>Passeports et postes</h2>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
+        
  
           <?php
+		  	if($error != null){
+				echo "<div class='text-center'><h3>".$error."</h3></div>";
+			}
             if($passeports != NULL) {
               ?>
               <table class="table table-striped table-bordered table-hover">
@@ -25,7 +28,10 @@
 						$pas_id=$pas["pas_id"];
 						echo "<tr>";
 							echo "<td>";
-								echo $pas["pas_id"];
+								echo $pas["pas_id"];?>
+								<br><a href="<?php echo base_url();?>index.php/invite/modifier_passe/<?php echo $pas['pas_id'];?>">Modifier <i class="bi bi-pencil-square"></i></a>
+            					<br><a href="<?php echo base_url();?>index.php/invite/desactiver_passe/<?php echo $pas['pas_id'];?>">Désactiver <i class="bi bi-trash-fill"></i></a>
+								<?php
 							echo "</td>";
 							echo "<td>";
 								$post0 = true;
@@ -35,7 +41,11 @@
 											if($post["pos_libelle"] != null && $post["pos_etat"] =='a'){
 												$post0 = false;
 												echo "<li>";
-												echo "<b><u>".$post["pos_datePost"]." :</u></b><br>".$post["pos_libelle"];
+												echo "<b style='margin-right:50px;'><u>".$post["pos_datePost"]." : </u></b>"?>
+												<a style='margin-right:10px;' href="<?php echo base_url();?>index.php/invite/modifier_post/<?php echo $post['pos_id'];?>">Modifier <i class="bi bi-pencil-square"></i></a>
+												<a href="<?php echo base_url();?>index.php/invite/desactiver_post/<?php echo $post['pos_id'];?>">Désactiver <i class="bi bi-trash-fill"></i></a>
+												<?php
+												echo "<br>".$post["pos_libelle"];
 												echo "</li>";
 											}
 										}                        
@@ -61,8 +71,6 @@
               <?php
             }
           ?>
-
-        </div>
       </div>
 
     </section>

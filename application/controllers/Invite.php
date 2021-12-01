@@ -106,12 +106,94 @@ class Invite extends CI_Controller {
 		if($username != null&& $status == 'i' && $session_life < 10){
 			$_SESSION['start'] = date('H:i:s');	
             $data['passeports'] = $this->db_model->get_passeport($username);
+			$data['error'] = null;
 
             $this->load->view('templates/haut');
             $this->load->view('templates/menu_invite');
             $this->load->view('invite-passeports',$data);
             $this->load->view('templates/bas');
 			
+		}else{
+            redirect(base_url().'index.php/compte/connecter');
+        }
+    }
+	public function ajoute_passe(){
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$username = $this->session->userdata('username');
+		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $this->session->userdata('start') ), date_create( date('H:i:s') ))->format('%r%i') ;
+		
+		
+		if($username != null&& $status == 'i' && $session_life < 10){
+			$_SESSION['start'] = date('H:i:s');
+			if($this->input->post('pasId') == null && $this->input->post('pasMdp') == null && $this->input->post('pasCnfMdp') == null){	
+					//add test session
+					$data['error'] = null; 
+					$this->load->view('templates/haut');
+					$this->load->view('templates/menu_invite');
+					$this->load->view('invite-add-passeport',$data);
+					$this->load->view('templates/bas');
+
+			}else if($this->input->post('pasId') != null && $this->input->post('pasMdp') != null && $this->input->post('pasCnfMdp') ==  $this->input->post('pasMdp') ){					
+				$pasId = $this->input->post('pasId');
+				$pasMdp = $this->input->post('pasMdp');
+				$pasCnfMdp = $this->input->post('pasCnfMdp');
+				$salt = "MY_sel@1999";
+				$password = hash('sha256', $salt.$pasMdp);
+				$ok = $this->db_model->add_passeport($pasId,$password,$username);
+				if($ok){
+					$data['error'] = "Passeport ajouté avec succés"; 
+					$this->load->view('templates/haut');
+					$this->load->view('templates/menu_invite');
+					$this->load->view('invite-add-passeport',$data);
+					$this->load->view('templates/bas');
+				}else{
+					$data['error'] = "Erreur inconnu réessayer plus tard !"; 
+					$this->load->view('templates/haut');
+					$this->load->view('templates/menu_invite');
+					$this->load->view('invite-add-passeport',$data);
+					$this->load->view('templates/bas');
+				}
+			}else if($this->input->post('pasId') != null && $this->input->post('pasMdp') != null && $this->input->post('pasCnfMdp') !=  $this->input->post('pasMdp') ){
+				$data['error'] = "Confirmation du mot de passe erronée, veuillez réessayer !"; 
+				$this->load->view('templates/haut');
+				$this->load->view('templates/menu_invite');
+				$this->load->view('invite-add-passeport',$data);
+				$this->load->view('templates/bas');
+			}else {
+				$data['error'] = "Veuillez remplir tous les champs"; 
+				$this->load->view('templates/haut');
+				$this->load->view('templates/menu_invite');
+				$this->load->view('invite-add-passeport',$data);
+				$this->load->view('templates/bas');
+			}
+		}else{
+			redirect(base_url().'index.php/compte/connecter');
+		}
+	}
+    public function desactiver_passe($pas_id){
+		$username = $this->session->userdata('username');
+		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $this->session->userdata('start') ), date_create( date('H:i:s') ))->format('%r%i') ;
+
+		if($username != null&& $status == 'i' && $session_life < 10){
+			$_SESSION['start'] = date('H:i:s');	
+            $this->db_model->desactiver_passe($pas_id);
+			redirect(base_url().'index.php/invite/passeport');
+		}else{
+            redirect(base_url().'index.php/compte/connecter');
+        }
+    }
+    public function desactiver_post($post_id){
+		$username = $this->session->userdata('username');
+		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $this->session->userdata('start') ), date_create( date('H:i:s') ))->format('%r%i') ;
+
+		if($username != null&& $status == 'i' && $session_life < 10){
+			$_SESSION['start'] = date('H:i:s');	
+            $this->db_model->desactiver_post($post_id);
+			redirect(base_url().'index.php/invite/passeport');
 		}else{
             redirect(base_url().'index.php/compte/connecter');
         }
