@@ -49,7 +49,11 @@ class Db_model extends CI_Model {
         return $query->row();
     }
 	public function get_all_invite(){
-        $query = $this->db->query("SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url,pos_id, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM t_post_pos  left join t_passeport_pas USING(pas_id) RIGHT join t_invit_inv USING(inv_id) left join t_invit_reseau using(inv_id) RIGHT join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_id , pos_datePost desc,  res_libelle;");
+        $query = $this->db->query("SELECT inv_id, inv_nom, inv_photo, res_libelle, res_url,pos_id, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM t_post_pos  left join t_passeport_pas USING(pas_id) RIGHT join t_invit_inv USING(inv_id) left join t_invit_reseau using(inv_id) RIGHT join t_reseauxSociaux_res USING(res_id) WHERE inv_etat = 'a' order by inv_nom , pos_datePost desc,  res_libelle;");
+        return $query->result_array();
+    }
+	public function get_anim_invite($ani_id){
+        $query = $this->db->query("SELECT inv_id,ani_id, inv_nom, inv_photo, res_libelle, res_url,pos_id, pos_libelle, pos_datePost, pos_etat, pas_etat, inv_etat FROM t_post_pos  left join t_passeport_pas USING(pas_id) RIGHT join t_invit_inv USING(inv_id) left join t_invit_reseau using(inv_id) left join t_invit_animation USING(inv_id) RIGHT join t_reseauxSociaux_res USING(res_id) WHERE ani_id='".$ani_id."' and inv_etat = 'a' order by inv_id , pos_datePost desc,  res_libelle;");
         return $query->result_array();
     }
 	//------------------------------------------------------------------------------------------
@@ -95,8 +99,15 @@ class Db_model extends CI_Model {
         return $query->row();
     }
 
+	//------------------------------------------------------------------------------------------
+	//                                  MODEL LIEUX
+	//------------------------------------------------------------------------------------------ 
 	public function get_all_lieux(){
         $query = $this->db->query("SELECT lie_id, lie_nom, lie_description, ser_id, ser_nom FROM t_lieu_lie left join t_servic_ser using(lie_id);");
+        return $query->result_array();
+    }
+	public function get_lieu($lie_id){
+        $query = $this->db->query("SELECT lie_id, lie_nom, lie_description, ser_id, ser_nom FROM t_lieu_lie left join t_servic_ser using(lie_id) where lie_id='".$lie_id."';");
         return $query->result_array();
     }
 	 
@@ -117,11 +128,33 @@ class Db_model extends CI_Model {
 		return $query;
 	}
 	//------------------------------------------------------------------------------------------
-	//                                  MODEL PASSEPORT
+	//                                  MODEL POST
 	//------------------------------------------------------------------------------------------
 	public function desactiver_post($postId){
 		$query =$this->db->simple_query("UPDATE t_post_pos set pos_etat = 'd' WHERE pos_id = ".$postId.";");
 		return $query;
+	}
+	public function add_post($pasId,$pasMdp,$post){
+		$query =$this->db->query("select check_passeport('".$pasId."','".$pasMdp."') as res;");
+		$passeOK = $query->row();
+
+		if($passeOK->res){
+			$this->db->simple_query("INSERT into t_post_pos values (NULL,'".$post."',CURDATE(),'a','".$pasId."')");
+		}else{
+			return false;
+		}
+		return true;
+	}
+	public function get_all_post(){
+        $query = $this->db->query("SELECT inv_id, inv_nom, pos_id, pos_libelle, pos_etat, pos_datePost ,pas_id FROM t_post_pos join t_passeport_pas USING(pas_id) join t_invit_inv USING(inv_id) order by inv_nom ;");
+        return $query->result_array();
+    }
+	public function chang_etat_post($postId,$etat){
+		if($etat == 'a'){
+			$this->db->simple_query("UPDATE t_post_pos set pos_etat = 'd' where pos_id='".$postId."'");
+		}else{
+			$this->db->simple_query("UPDATE t_post_pos set pos_etat = 'a' where pos_id='".$postId."'");
+		}
 	}
 	//------------------------------------------------------------------------------------------
 	//                                  FIIIIIIIIIIIIIIIIIIN

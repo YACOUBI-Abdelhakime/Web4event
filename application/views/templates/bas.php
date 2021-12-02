@@ -74,11 +74,20 @@
       <div class="credits">
         Designed by <a>A.YACOUBI</a>
       </div>
+      <?php
+        if(!isset($_SESSION['username'])){          
+          ?>
+          <div class="credits">
+            <a style="font-size:18px;color:white;" href="<?php echo base_url();?>index.php/accueil/ajouter_post"><i class="bi bi-plus-circle"></i></a>
+          </div>
+          <?php
+        }
+      ?>
     </div>
   <!-- *********************************************************************************** -->
   </footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="<?php echo base_url();?>style/assets/vendor/aos/aos.js"></script>

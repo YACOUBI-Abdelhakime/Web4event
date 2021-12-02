@@ -2,7 +2,7 @@
 <section id="actualites" class="section-with-bg">
 <div class="container" data-aos="fade-up">
 <div class="section-header">
-    <h2>LIEUX ET SERVICES<?php //echo $date;?></h2>
+    <h2>LIEU ET SERVICES<?php //echo $date;?></h2>
 </div>
 
 <?php

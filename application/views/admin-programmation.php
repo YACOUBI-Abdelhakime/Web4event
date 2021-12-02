@@ -108,10 +108,12 @@
             }else{
                 echo "<td>";echo "Aucun lieu";echo "</td>";
             }
-            echo "<td>";?>
+            echo "<td>";
+            $urlSup =  "supprimer/".$a['ani_id'];
+            ?>
 
             <a href="<?php echo base_url();?>index.php/animation/modifier/<?php echo $a['ani_id'];?>">Modifier <i class="bi bi-pencil-square"></i></a>
-            <br><a href="<?php echo base_url();?>index.php/animation/supprimer/<?php echo $a['ani_id'];?>">Supprimer <i class="bi bi-trash-fill"></i></a>
+            <br><a style="cursor:pointer;" onclick="ConfirmDelete('<?php echo $urlSup; ?>')" >Supprimer <i class="bi bi-trash-fill"></i></a>
             
            <?php echo "</td>";
             
@@ -144,3 +146,12 @@
     </tbody>
     </table>
 </section>
+
+<script type="text/javascript">
+      function ConfirmDelete(url)
+      {
+          console.log(">>>"+url)
+            if (confirm("Êtes-vous sûr ?"))
+                 location.href=url;
+      }
+  </script>

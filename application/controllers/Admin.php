@@ -131,5 +131,36 @@ class Admin extends CI_Controller {
 			redirect(base_url().'index.php/compte/connecter');
 		}
 	}
+	public function post(){
+		$username = $this->session->userdata('username');
+		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+
+		if($username != null&& $status == 'o' && $session_life < 10){			
+			$_SESSION['start'] = date('H:i:s');	
+			$data['posts'] = $this->db_model->get_all_post();
+
+			$this->load->view('templates/haut');
+			$this->load->view('templates/menu_admin');
+			$this->load->view('admin-posts',$data);
+			$this->load->view('templates/bas'); 
+		}else{
+			redirect(base_url().'index.php/compte/connecter');
+		}
+	}
+	public function post_chang_etat($posId,$etat){
+		$username = $this->session->userdata('username');
+		$status = $this->session->userdata('status');
+		$session_life =  date_diff(date_create( $_SESSION['start'] ), date_create( date('H:i:s') ))->format('%r%i') ;
+
+		if($username != null&& $status == 'o' && $session_life < 10){			
+			$_SESSION['start'] = date('H:i:s');	
+			$this->db_model->chang_etat_post($posId,$etat);
+
+			redirect(base_url().'index.php/admin/post');
+		}else{
+			redirect(base_url().'index.php/compte/connecter');
+		}
+	}
 }
 ?>

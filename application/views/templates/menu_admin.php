@@ -16,8 +16,9 @@
           <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/invite/lister">Invités</a></li>
           */?>
           <li><a id="nprogrammation" class="nav-link scrollto" href="<?php echo base_url();?>index.php/animation/admin">Programmation</a></li>
-          <li><a id="nprogrammation" class="nav-link scrollto" href="<?php echo base_url();?>index.php/admin/lieux">Lieux</a></li>
+          <li><a id="nprogr" class="nav-link scrollto" href="<?php echo base_url();?>index.php/admin/lieux">Lieux</a></li>
           <li><a id="ninvites" class="nav-link scrollto" href="<?php echo base_url();?>index.php/admin/profile">Profile</a></li>
+          <li><a id="nipost" class="nav-link scrollto" href="<?php echo base_url();?>index.php/admin/post">Posts</a></li>
           <li><a id="ncomptes" class="nav-link scrollto" href="<?php echo base_url();?>index.php/admin/comptes">Comptes</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

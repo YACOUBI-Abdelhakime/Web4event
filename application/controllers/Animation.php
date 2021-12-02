@@ -48,24 +48,29 @@ class Animation extends CI_Controller {
 
 		if($username != null&& $status == 'o' && $session_life < 10){			
 			$_SESSION['start'] = date('H:i:s');	
-			$ok = $this->db_model->delete_animation($id);
-			$data['error'] = '';
-			if(!$ok){
-				$data['error'] = 'Erreur inconnu réessayer plus tard !';
-				$this->load->view('templates/haut');
-				$this->load->view('templates/menu_admin');
-				$this->load->view('admin-supp-anim',$data);
-				$this->load->view('templates/bas');
-			}else{
-				$this->load->view('templates/haut');
-				$this->load->view('templates/menu_admin');
-				$this->load->view('admin-supp-anim',$data);
-				$this->load->view('templates/bas');
-			}
+			$this->db_model->delete_animation($id);
+			
+			redirect(base_url().'index.php/animation/admin');
 		}else{
 			redirect(base_url().'index.php/compte/connecter');
 		} 
 		 
+	}
+	public function galerie($aniId){
+		//FONCTION POUR LES VISITEUR
+		$data['invs'] = $this->db_model->get_anim_invite($aniId); 
+		$this->load->view('templates/haut');
+		$this->load->view('templates/menu_visiteur.php');
+		$this->load->view('animation-galerie',$data);
+		$this->load->view('templates/bas'); 
+	}
+	public function lieu($lie_id){
+		//FONCTION POUR LES VISITEUR
+		$data['lieux'] = $this->db_model->get_lieu($lie_id);
+		$this->load->view('templates/haut');
+		$this->load->view('templates/menu_visiteur');
+		$this->load->view('animation-lieu',$data);
+		$this->load->view('templates/bas');
 	}
 }
 ?>

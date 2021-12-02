@@ -3,7 +3,7 @@
   <section id="hero">
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
       <h1 class="mb-4 pb-0"><span>SALON de L'AUTOMOBILE 2022</span></h1>
-      <p class="mb-4 pb-0">20-30 December à Capucins Brest,France</p>
+      <p class="mb-4 pb-0">20-30 Décember à Capucins Brest,France</p>
       <a href="https://youtu.be/Cxn-kVaKNF4" class="glightbox play-btn mb-4"></a>
       <a href="#about" class="about-btn scrollto">About The Event</a>
     </div>

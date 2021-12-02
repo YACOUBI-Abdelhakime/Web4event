@@ -20,5 +20,52 @@ class Accueil extends CI_Controller {
 		$this->load->view('page_accueil',$data);
 		$this->load->view('templates/bas');
 	}
+	public function ajouter_post(){ 
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		
+
+		if($this->input->post('pasId') == null && $this->input->post('pasMdp') == null && $this->input->post('post') == null){	
+				//add test session
+				$data['error'] = null; 
+				$this->load->view('templates/haut');
+				$this->load->view('templates/menu_visiteur');
+				$this->load->view('ajouter-post',$data);
+				$this->load->view('templates/bas');
+
+		}else if($this->input->post('pasId') != null && $this->input->post('pasMdp') != null && $this->input->post('post') != null && strlen($this->input->post('post')) <= 140 ){
+			$pasId = $this->input->post('pasId');
+			$pasMdp = $this->input->post('pasMdp');
+			$post = $this->input->post('post');
+			$salt = "MY_sel@1999";
+			$password = hash('sha256', $salt.$pasMdp);
+			$ok = $this->db_model->add_post($pasId,$password,$post);
+			if($ok){
+				$data['error'] = "Post ajouté avec succés"; 
+				$this->load->view('templates/haut');
+				$this->load->view('templates/menu_visiteur');
+				$this->load->view('ajouter-post',$data);
+				$this->load->view('templates/bas');
+			}else{
+				$data['error'] = "Identifiant ou mot de passe erronée, aucun passeport trouvé !"; 
+				$this->load->view('templates/haut');
+				$this->load->view('templates/menu_visiteur');
+				$this->load->view('ajouter-post',$data);
+				$this->load->view('templates/bas');
+			}
+		}else if($this->input->post('pasId') != null && $this->input->post('pasMdp') != null && strlen($this->input->post('post')) > 140 ){
+			$data['error'] = "Un post a 140 caractères maximum !"; 
+			$this->load->view('templates/haut');
+			$this->load->view('templates/menu_visiteur');
+			$this->load->view('ajouter-post',$data);
+			$this->load->view('templates/bas');
+		}else {
+			$data['error'] = "Veuillez remplir tous les champs"; 
+			$this->load->view('templates/haut');
+			$this->load->view('templates/menu_visiteur');
+			$this->load->view('ajouter-post',$data);
+			$this->load->view('templates/bas');
+		}
+	}
 }
 ?>
