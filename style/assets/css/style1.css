@@ -1,4 +1,4 @@
-/**
+﻿/**
 * Template Name: TheEvent - v4.6.0
 * Template URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
 * Author: BootstrapMade.com
@@ -1024,6 +1024,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #actualites {
   padding: 60px 0;
+  padding-bottom:400px;
 }
 #actualites .actualite {
   border: 1px solid #e0e5fa;
@@ -1318,6 +1319,8 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #contact {
   padding: 60px 0;
+  padding-bottom:400px;
+
 }
 #contact .contact-info {
   margin-bottom: 20px;
