@@ -4,7 +4,7 @@
 
       <div id="logo" class="me-auto">
         <!-- Uncomment below if you prefer to use a text logo -->
-        <h1><a href="">Salon <span>Auto</span></a></h1>
+        <h1><a href="<?php echo base_url();?>index.php/compte/home">Salon <span>Auto</span></a></h1>
         <!-- <a href="" class="scrollto"><img src="<?php //echo base_url();?>style/assets/img/logo.png" alt="" title=""></a> -->
       </div>
 
