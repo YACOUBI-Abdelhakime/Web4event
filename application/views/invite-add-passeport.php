@@ -17,7 +17,17 @@
 				<div class="text-center"><input type="text" id="pasId" class="fadeIn second" name="pasId" placeholder="Identifiant"></div>
 				<div class="text-center"><input type="password" id="pasMdp" class="fadeIn third" name="pasMdp" placeholder="Mot de passe"></div>
 				<div class="text-center"><input type="password" id="pasCnfMdp" class="fadeIn third" name="pasCnfMdp" placeholder="Confirmation du Mot de passe"></div>
-				<div class="text-center"><input type="submit" class="fadeIn fourth" value="Ajouter"></div>
+				<div class="text-center"><input id="btn-sub" type="submit" class="fadeIn fourth" value="Ajouter"></div>
 			</form>
 	</div> 
 </section>
+<script>
+
+document.getElementById("btn-sub").addEventListener("click", function() {
+	if(document.getElementById("pasCnfMdp").value == '' && document.getElementById("pasMdp").value == '' && document.getElementById("pasId").value == ''){
+		document.getElementById("pasId").value = " ";
+	}
+  
+});
+
+</script>

@@ -63,9 +63,20 @@ if($error != null){
         <!-- <label for="lname">Confirmation du mot de passe:</label><br> -->
         <div class="text-center"><input type="password" id="cnfmdp" class="fadeIn third" name="cnfmdp" placeholder="Confirmation du mot de passe"></div>
         <div class="text-center">
-            <input type="submit" class="fadeIn fourth" value="Valider">
+            <input id="btn-sub" type="submit" class="fadeIn fourth" value="Valider">
             <a href="<?php echo base_url();?>index.php/admin/profile" ><button type="button" class="fadeIn fourth clrAnuler">  Annuler </button> </a>
         </div>
     </form>
     
 </section>
+
+<script>
+
+document.getElementById("btn-sub").addEventListener("click", function() { 
+	if(document.getElementById("cnfmdp").value == '' && document.getElementById("mdp").value == '' ){
+		document.getElementById("mdp").value = " ";
+	}
+  
+});
+
+</script>

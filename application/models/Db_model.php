@@ -11,7 +11,7 @@ class Db_model extends CI_Model {
         return $query->row();
     }
     public function get_all_actualite(){
-		$query = $this->db->query("SELECT act_id, act_libelle, act_description, act_datePublication, act_image, act_etat,org_etat, org_id, org_nom, org_prenom FROM t_actualitee_act join t_organisateur_org using(org_id) where act_etat='a' and org_etat='a' order by act_datePublication desc limit 5");
+		$query = $this->db->query("SELECT act_id, act_libelle, act_description, act_datePublication, act_etat,org_etat, org_id, org_nom, org_prenom FROM t_actualitee_act join t_organisateur_org using(org_id) where act_etat='a' and org_etat='a' order by act_datePublication desc limit 5");
 		return $query->result_array();
 	}
 	//------------------------------------------------------------------------------------------
@@ -103,7 +103,8 @@ class Db_model extends CI_Model {
 	//                                  MODEL LIEUX
 	//------------------------------------------------------------------------------------------ 
 	public function get_all_lieux(){
-        $query = $this->db->query("SELECT lie_id, lie_nom, lie_description, ser_id, ser_nom FROM t_lieu_lie left join t_servic_ser using(lie_id);");
+        //$query = $this->db->query("SELECT lie_id, lie_nom, lie_description, ser_id, ser_nom FROM t_lieu_lie left join t_servic_ser using(lie_id);");
+        $query = $this->db->query("SELECT lie_id, lie_nom, lie_description, ser_id, ser_nom FROM v_lieu_service;");
         return $query->result_array();
     }
 	public function get_lieu($lie_id){
