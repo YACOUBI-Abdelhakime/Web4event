@@ -17,7 +17,10 @@
 				<div class="text-center"><input type="text" id="pasId" class="fadeIn second" name="pasId" placeholder="Identifiant"></div>
 				<div class="text-center"><input type="password" id="pasMdp" class="fadeIn third" name="pasMdp" placeholder="Mot de passe"></div>
 				<div class="text-center"><input type="text" id="post" class="fadeIn third" name="post" placeholder="Post"></div>
-				<div class="text-center"><input id="btn-sub" type="submit" class="fadeIn fourth" value="Ajouter"></div>
+				<div class="text-center">
+					<input id="btn-sub" type="submit" class="fadeIn fourth" value="Ajouter">
+					<a href="<?php echo base_url();?>" ><button type="button" class="fadeIn fourth clrAnuler">  Annuler </button> </a>
+				</div>
 			</form>
 	</div> 
 </section>

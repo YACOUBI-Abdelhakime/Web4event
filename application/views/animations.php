@@ -44,7 +44,7 @@
                 echo "<tr><th colspan='7' class='center-txt bg-grey'>Animations passées</th></tr>";
             }
             echo "<tr>";
-            echo "<td>";echo $a["ani_libelle"]; ?> <br><a href="<?php echo base_url();?>index.php/animation/detaille/<?php echo $a['ani_id'];?>">détailles <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
+            echo "<td>";echo $a["ani_libelle"]; ?> <br><a href="<?php echo base_url();?>index.php/animation/detaille/<?php echo $a['ani_id'];?>">Détails <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
             echo "<td>";
             echo $a["ani_description"];
             echo "</td>";
@@ -99,7 +99,7 @@
             } 
             echo "</td>";
             if($a["lie_nom"] != null){
-                echo "<td>";echo $a["lie_nom"];?> <br><a href="<?php echo base_url();?>index.php/animation/lieu/<?php echo $a['lie_id'];?>">détailles <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
+                echo "<td>";echo $a["lie_nom"];?> <br><a href="<?php echo base_url();?>index.php/animation/lieu/<?php echo $a['lie_id'];?>">Détails <i class="bi bi-arrow-up-right-square-fill"></i></a><?php echo "</td>";
             }else{
                 echo "<td>";echo "Aucun lieu";echo "</td>";
             }
